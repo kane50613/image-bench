@@ -1,5 +1,6 @@
 "use client";
 
+import { RefreshCcw } from "lucide-react";
 import Link from "next/link";
 import { objectKeys } from "ts-extras";
 import { defaultHeight, defaultWidth, providers, templates } from "~/lib/const";
@@ -8,7 +9,6 @@ import { Button } from "./ui/button";
 import { ButtonGroup } from "./ui/button-group";
 import { Card, CardTitle } from "./ui/card";
 import { Skeleton } from "./ui/skeleton";
-import { RefreshCcw } from "lucide-react";
 
 export function ImageCard({
   template,
