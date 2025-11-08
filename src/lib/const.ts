@@ -1,9 +1,5 @@
-import { HelloWorld } from "./variants/hello-world";
-import { Tailwind } from "./variants/tailwind";
-import { Vercel } from "./variants/vercel";
-
-export const defaultWidth = 800;
-export const defaultHeight = 400;
+export const defaultWidth = 1600;
+export const defaultHeight = 840;
 
 export const providers = {
   takumi: "Takumi",
@@ -11,7 +7,7 @@ export const providers = {
 } as const;
 
 export const variants = {
-  "hello-world": HelloWorld,
-  vercel: Vercel,
-  tailwind: Tailwind,
+  "hello-world": "Hello World",
+  vercel: "Vercel",
+  tailwind: "Tailwind",
 } as const;

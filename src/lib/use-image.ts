@@ -1,4 +1,3 @@
-import nstr from "nstr";
 import { useCallback, useEffect, useState } from "react";
 
 export function useImage(
@@ -32,19 +31,16 @@ export function useImage(
       URL.revokeObjectURL(image.url);
     }
 
-    const start = performance.now();
+    (async () => {
+      const res = await fetch(imageUrl);
+      const blob = await res.blob();
 
-    fetch(imageUrl)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const end = performance.now();
-
-        setImage({
-          url: URL.createObjectURL(blob),
-          duration: nstr(end - start),
-          stale: false,
-        });
+      setImage({
+        url: URL.createObjectURL(blob),
+        duration: res.headers.get("X-Duration") ?? "-",
+        stale: false,
       });
+    })();
   }, [imageUrl, image]);
 
   return {

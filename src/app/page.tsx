@@ -13,6 +13,13 @@ export default function Home() {
         <ImageCard provider="next-og" variant="vercel" />
         <ImageCard provider="takumi" variant="vercel" />
       </div>
+      {/* <ButtonGroup>
+        {objectKeys(variants).map((variant) => (
+          <Button key={variant} variant="outline">
+            {variants[variant]}
+          </Button>
+        ))}
+      </ButtonGroup> */}
     </main>
   );
 }
