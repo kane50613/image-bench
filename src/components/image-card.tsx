@@ -1,14 +1,14 @@
 "use client";
 
-import {
-  defaultHeight,
-  defaultWidth,
-  providers,
-  type templates,
-} from "~/lib/const";
+import Link from "next/link";
+import { objectKeys } from "ts-extras";
+import { defaultHeight, defaultWidth, providers, templates } from "~/lib/const";
 import { useImage } from "~/lib/use-image";
+import { Button } from "./ui/button";
+import { ButtonGroup } from "./ui/button-group";
 import { Card, CardTitle } from "./ui/card";
 import { Skeleton } from "./ui/skeleton";
+import { RefreshCcw } from "lucide-react";
 
 export function ImageCard({
   template,
@@ -22,7 +22,7 @@ export function ImageCard({
 
   return (
     <Card className="gap-2 py-2">
-      <CardTitle className="font-mono px-4 py-1 sm:text-lg">
+      <CardTitle className="px-4 py-1 sm:text-lg">
         <a
           href={providers[provider].url}
           target="_blank"
@@ -30,7 +30,7 @@ export function ImageCard({
         >
           {providers[provider].title}
         </a>
-        <span className="text-xs sm:text-sm text-muted-foreground float-right h-full content-center">
+        <span className="text-xs sm:text-sm text-muted-foreground float-right h-full content-center font-mono font-normal">
           {template}
         </span>
       </CardTitle>
@@ -69,5 +69,26 @@ export function ImageCard({
         </div>
       </div>
     </Card>
+  );
+}
+
+export function ImageCards({ template }: { template: keyof typeof templates }) {
+  return (
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+        <ImageCard provider="next-og" template={template} />
+        <ImageCard provider="takumi" template={template} />
+      </div>
+      <ButtonGroup className="my-8">
+        {objectKeys(templates).map((template) => (
+          <Button key={template} variant="outline" asChild>
+            <Link href={`/t/${template}`}>{templates[template]}</Link>
+          </Button>
+        ))}
+        <Button variant="outline" onClick={() => location.reload()}>
+          <RefreshCcw />
+        </Button>
+      </ButtonGroup>
+    </>
   );
 }

@@ -7,7 +7,14 @@ export const providers = {
     url: "https://takumi.kane.tw/docs",
   },
   "next-og": {
-    title: "next/og (satori + resvg)",
+    title: (
+      <span>
+        next/og{" "}
+        <span className="text-xs sm:text-sm text-muted-foreground font-medium">
+          (satori + resvg)
+        </span>
+      </span>
+    ),
     url: "https://nextjs.org/docs/app/api-reference/functions/image-response",
   },
 } as const;
