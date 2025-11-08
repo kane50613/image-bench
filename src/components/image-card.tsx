@@ -80,9 +80,14 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
         <ImageCard provider="takumi" template={template} />
       </div>
       <ButtonGroup className="my-8">
-        {objectKeys(templates).map((template) => (
-          <Button key={template} variant="outline" asChild>
-            <Link href={`/t/${template}`}>{templates[template]}</Link>
+        {objectKeys(templates).map((t) => (
+          <Button
+            key={t}
+            variant={t === template ? "default" : "outline"}
+            className="border"
+            asChild
+          >
+            <Link href={`/t/${t}`}>{templates[t]}</Link>
           </Button>
         ))}
         <Button variant="outline" onClick={() => location.reload()}>
