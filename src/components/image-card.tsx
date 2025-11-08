@@ -23,7 +23,13 @@ export function ImageCard({
   return (
     <Card className="gap-2 py-2">
       <CardTitle className="font-mono px-4 py-1 sm:text-lg">
-        {providers[provider]}
+        <a
+          href={providers[provider].url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {providers[provider].title}
+        </a>
         <span className="text-xs sm:text-sm text-muted-foreground float-right h-full content-center">
           {template}
         </span>

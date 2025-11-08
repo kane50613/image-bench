@@ -2,8 +2,14 @@ export const defaultWidth = 800;
 export const defaultHeight = 400;
 
 export const providers = {
-  takumi: "Takumi",
-  "next-og": "next/og (satori + resvg)",
+  takumi: {
+    title: "Takumi",
+    url: "https://takumi.kane.tw/docs",
+  },
+  "next-og": {
+    title: "next/og (satori + resvg)",
+    url: "https://nextjs.org/docs/app/api-reference/functions/image-response",
+  },
 } as const;
 
 export const templates = {
