@@ -9,7 +9,7 @@ export default async function Home({ params }: PageProps<"/t/[template]">) {
     <main className="flex flex-col items-center justify-center container mx-auto px-4">
       <div className="flex flex-col items-center justify-center gap-4 py-12">
         <h1 className="text-4xl sm:text-6xl font-bold">Image Bench</h1>
-        <p className="text-lg sm:text-xl text-muted-foreground">
+        <p className="text-lg text-center sm:text-xl text-muted-foreground">
           Figure out how fast the image generation can be. Check the{" "}
           <a
             href="https://github.com/kane50613/image-bench/blob/master/src/app/render/route.tsx"

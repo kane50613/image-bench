@@ -6,6 +6,17 @@ export const providers = {
     title: "Takumi",
     url: "https://takumi.kane.tw/docs",
   },
+  "takumi-webp": {
+    title: (
+      <span>
+        Takumi{" "}
+        <span className="text-xs sm:text-sm text-muted-foreground font-medium">
+          WebP
+        </span>
+      </span>
+    ),
+    url: "https://takumi.kane.tw/docs",
+  },
   "next-og": {
     title: (
       <span>

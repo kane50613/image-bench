@@ -12,6 +12,7 @@ export const dynamic = "force-dynamic";
 
 const providers = {
   takumi: takumiProvider,
+  "takumi-webp": takumiWebpProvider,
   "next-og": nextOgProvider,
 } as const;
 
@@ -64,6 +65,18 @@ function takumiProvider(
   return new ImageResponse(createElement(templates[template]), {
     width,
     height,
+  });
+}
+
+function takumiWebpProvider(
+  template: keyof typeof templates,
+  width: number,
+  height: number,
+) {
+  return new ImageResponse(createElement(templates[template]), {
+    width,
+    height,
+    format: "webp",
   });
 }
 
