@@ -18,7 +18,7 @@ export function ImageCard({
   provider: keyof typeof providers;
 }) {
   const aspectRatio = defaultWidth / defaultHeight;
-  const { src, duration, invalidate } = useImage(
+  const { src, duration, filesize, invalidate } = useImage(
     provider,
     variant,
     defaultWidth,
@@ -44,9 +44,12 @@ export function ImageCard({
         />
       )}
       {!src && (
-        <Skeleton className="border-y rounded-none my-px" style={{ aspectRatio }} />
+        <Skeleton
+          className="border-y rounded-none my-px"
+          style={{ aspectRatio }}
+        />
       )}
-      <div className="grid grid-cols-2 text-sm px-4">
+      <div className="grid grid-cols-3 text-sm px-4">
         <div>
           <p className="text-muted-foreground">Duration</p>
           <p className="font-mono">{duration ? `${duration}ms` : "-"}</p>
@@ -56,6 +59,10 @@ export function ImageCard({
           <p className="font-mono">
             {defaultWidth}x{defaultHeight}
           </p>
+        </div>
+        <div>
+          <p className="text-muted-foreground">Filesize</p>
+          <p className="font-mono">{filesize ?? "-"}</p>
         </div>
       </div>
     </Card>

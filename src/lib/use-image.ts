@@ -1,3 +1,4 @@
+import prettyBytes from "pretty-bytes";
 import { useCallback, useEffect, useState } from "react";
 
 export function useImage(
@@ -9,10 +10,12 @@ export function useImage(
   const [image, setImage] = useState<{
     url: string | null;
     duration: string | null;
+    filesize: string | null;
     stale: boolean;
   }>({
     url: null,
     duration: null,
+    filesize: null,
     stale: true,
   });
 
@@ -38,6 +41,7 @@ export function useImage(
       setImage({
         url: URL.createObjectURL(blob),
         duration: res.headers.get("X-Duration") ?? "-",
+        filesize: prettyBytes(blob.size),
         stale: false,
       });
     })();
@@ -46,6 +50,7 @@ export function useImage(
   return {
     src: image.url,
     duration: image.duration,
+    filesize: image.filesize,
     invalidate,
   };
 }
