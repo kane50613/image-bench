@@ -4,46 +4,41 @@ import {
   defaultHeight,
   defaultWidth,
   providers,
-  type variants,
+  type templates,
 } from "~/lib/const";
 import { useImage } from "~/lib/use-image";
 import { Card, CardTitle } from "./ui/card";
 import { Skeleton } from "./ui/skeleton";
 
 export function ImageCard({
-  variant,
+  template,
   provider,
 }: {
-  variant: keyof typeof variants;
+  template: keyof typeof templates;
   provider: keyof typeof providers;
 }) {
   const aspectRatio = defaultWidth / defaultHeight;
-  const { src, duration, filesize, invalidate } = useImage(
-    provider,
-    variant,
-    defaultWidth,
-    defaultHeight,
-  );
+  const image = useImage(provider, template, defaultWidth, defaultHeight);
 
   return (
     <Card className="gap-2 py-2">
-      <CardTitle className="font-mono px-4 text-lg">
+      <CardTitle className="font-mono px-4 py-1 sm:text-lg">
         {providers[provider]}
-        <span className="text-sm text-muted-foreground float-end h-full content-center">
-          {variant}
+        <span className="text-xs sm:text-sm text-muted-foreground float-right h-full content-center">
+          {template}
         </span>
       </CardTitle>
-      {src && (
+      {image?.src && (
         // biome-ignore lint/performance/noImgElement: We want raw image
         <img
-          src={src}
-          alt={variant}
+          src={image.src}
+          alt={template}
           className="border-y"
           width={defaultWidth}
           height={defaultHeight}
         />
       )}
-      {!src && (
+      {!image?.src && (
         <Skeleton
           className="border-y rounded-none my-px"
           style={{ aspectRatio }}
@@ -52,7 +47,9 @@ export function ImageCard({
       <div className="grid grid-cols-3 text-sm px-4">
         <div>
           <p className="text-muted-foreground">Duration</p>
-          <p className="font-mono">{duration ? `${duration}ms` : "-"}</p>
+          <p className="font-mono">
+            {image?.duration ? `${image.duration}ms` : "-"}
+          </p>
         </div>
         <div>
           <p className="text-muted-foreground">Resolution</p>
@@ -62,7 +59,7 @@ export function ImageCard({
         </div>
         <div>
           <p className="text-muted-foreground">Filesize</p>
-          <p className="font-mono">{filesize ?? "-"}</p>
+          <p className="font-mono">{image?.filesize ?? "-"}</p>
         </div>
       </div>
     </Card>

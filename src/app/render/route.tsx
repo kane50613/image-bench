@@ -4,9 +4,9 @@ import nstr from "nstr";
 import { createElement } from "react";
 import { objectKeys } from "ts-extras";
 import * as z from "zod/mini";
-import { HelloWorld } from "~/lib/variants/hello-world";
-import { Tailwind } from "~/lib/variants/tailwind";
-import { Vercel } from "~/lib/variants/vercel";
+import { HelloWorld } from "~/lib/templates/hello-world";
+import { Tailwind } from "~/lib/templates/tailwind";
+import { Vercel } from "~/lib/templates/vercel";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +15,7 @@ const providers = {
   "next-og": nextOgProvider,
 } as const;
 
-const variants = {
+const templates = {
   "hello-world": HelloWorld,
   vercel: Vercel,
   tailwind: Tailwind,
@@ -23,16 +23,16 @@ const variants = {
 
 const paramsSchema = z.object({
   provider: z.enum(objectKeys(providers)),
-  variant: z.enum(objectKeys(variants)),
+  template: z.enum(objectKeys(templates)),
   width: z.int().check(z.positive(), z.lte(1920)),
   height: z.int().check(z.positive(), z.lte(1080)),
 });
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const { provider, variant, width, height } = paramsSchema.parse({
+  const { provider, template, width, height } = paramsSchema.parse({
     provider: searchParams.get("provider"),
-    variant: searchParams.get("variant"),
+    template: searchParams.get("template"),
     width: Number(searchParams.get("width")),
     height: Number(searchParams.get("height")),
   });
@@ -40,7 +40,7 @@ export async function GET(request: Request) {
   const start = performance.now();
 
   const buffer = await providers[provider](
-    variant,
+    template,
     width,
     height,
   ).arrayBuffer();
@@ -57,22 +57,22 @@ export async function GET(request: Request) {
 }
 
 function takumiProvider(
-  variant: keyof typeof variants,
+  template: keyof typeof templates,
   width: number,
   height: number,
 ) {
-  return new ImageResponse(createElement(variants[variant]), {
+  return new ImageResponse(createElement(templates[template]), {
     width,
     height,
   });
 }
 
 function nextOgProvider(
-  variant: keyof typeof variants,
+  template: keyof typeof templates,
   width: number,
   height: number,
 ) {
-  return new NextOgImageResponse(createElement(variants[variant]), {
+  return new NextOgImageResponse(createElement(templates[template]), {
     width,
     height,
   });
