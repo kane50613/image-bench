@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
-  serverExternalPackages: ["@takumi-rs/core"],
+  serverExternalPackages: ["@takumi-rs/image-response"],
   typedRoutes: true,
   reactStrictMode: false,
   redirects: () => [
