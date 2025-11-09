@@ -5,6 +5,7 @@ import { createElement } from "react";
 import { objectKeys } from "ts-extras";
 import * as z from "zod/mini";
 import { HelloWorld } from "~/lib/templates/hello-world";
+import { Rauchg } from "~/lib/templates/rauchg";
 import { Tailwind } from "~/lib/templates/tailwind";
 import { Vercel } from "~/lib/templates/vercel";
 
@@ -20,6 +21,7 @@ const templates = {
   "hello-world": HelloWorld,
   vercel: Vercel,
   tailwind: Tailwind,
+  rauchg: Rauchg,
 } as const;
 
 const paramsSchema = z.object({

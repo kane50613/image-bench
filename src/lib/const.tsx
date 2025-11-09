@@ -33,5 +33,6 @@ export const providers = {
 export const templates = {
   "hello-world": "Hello World",
   vercel: "Vercel",
+  rauchg: "rauchg",
   tailwind: "Tailwind",
 } as const;
