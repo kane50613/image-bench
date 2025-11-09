@@ -12,7 +12,7 @@
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
-    "@takumi-rs/image-response": "^0.46.3",
+    "@takumi-rs/image-response": "^0.46.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.553.0",
@@ -22,7 +22,7 @@
     "pretty-bytes": "^7.1.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "tailwind-merge": "^3.3.1",
+    "tailwind-merge": "^3.4.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
