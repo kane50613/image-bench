@@ -2,6 +2,17 @@ export const defaultWidth = 800;
 export const defaultHeight = 400;
 
 export const providers = {
+  "next-og": {
+    title: (
+      <span>
+        next/og{" "}
+        <span className="text-xs sm:text-sm text-muted-foreground font-medium">
+          (satori + resvg)
+        </span>
+      </span>
+    ),
+    url: "https://nextjs.org/docs/app/api-reference/functions/image-response",
+  },
   takumi: {
     title: "Takumi",
     url: "https://takumi.kane.tw/docs",
@@ -16,17 +27,6 @@ export const providers = {
       </span>
     ),
     url: "https://takumi.kane.tw/docs",
-  },
-  "next-og": {
-    title: (
-      <span>
-        next/og{" "}
-        <span className="text-xs sm:text-sm text-muted-foreground font-medium">
-          (satori + resvg)
-        </span>
-      </span>
-    ),
-    url: "https://nextjs.org/docs/app/api-reference/functions/image-response",
   },
 } as const;
 
