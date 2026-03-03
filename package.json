@@ -15,6 +15,7 @@
     "@takumi-rs/image-response": "^0.70.3",
     "@takumi-rs/wasm": "^0.70.3",
     "@vercel/og": "^0.10.0",
+    "@vercel/og-sharp": "npm:@vercel/og@^0.10.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",

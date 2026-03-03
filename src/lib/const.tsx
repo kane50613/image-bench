@@ -13,6 +13,17 @@ export const providers = {
     ),
     url: "https://www.npmjs.com/package/@vercel/og",
   },
+  "vercel-og-sharp": {
+    title: (
+      <span>
+        @vercel/og{" "}
+        <span className="text-xs sm:text-sm text-muted-foreground font-medium">
+          (satori + sharp)
+        </span>
+      </span>
+    ),
+    url: "https://www.npmjs.com/package/@vercel/og",
+  },
   takumi: {
     title: "Takumi",
     url: "https://takumi.kane.tw/docs",
