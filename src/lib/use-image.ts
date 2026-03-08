@@ -5,6 +5,7 @@ interface ImageData {
   src: string;
   duration: string;
   filesize: string;
+  error: string | null;
 }
 
 export function useImage(
@@ -30,28 +31,42 @@ export function useImage(
 
   useEffect(() => {
     (async () => {
-      abortControllerRef.current = new AbortController();
+      try {
+        abortControllerRef.current = new AbortController();
 
-      const queryString = `${imageUrl()}&_t=${refreshKey}`;
+        const queryString = `${imageUrl()}&_t=${refreshKey}`;
 
-      const res = await fetch(`/render?${queryString}`, {
-        signal: abortControllerRef.current?.signal,
-      });
+        const res = await fetch(`/render?${queryString}`, {
+          signal: abortControllerRef.current?.signal,
+        });
 
-      abortControllerRef.current = null;
+        abortControllerRef.current = null;
 
-      if (!res.ok) {
-        throw new Error(`Failed to fetch image: ${res.status}`);
+        if (!res.ok) {
+          throw new Error(`Failed to fetch image: ${res.status}`);
+        }
+
+        const blob = await res.blob();
+        const objectUrl = URL.createObjectURL(blob);
+
+        setImage({
+          src: objectUrl,
+          duration: res.headers.get("X-Duration") ?? "-",
+          filesize: prettyBytes(blob.size),
+          error: null,
+        });
+      } catch (error) {
+        if (error instanceof Error && error.name === "AbortError") {
+          return;
+        }
+
+        setImage({
+          src: "",
+          duration: "-",
+          filesize: "—",
+          error: error instanceof Error ? error.message : "Failed to load",
+        });
       }
-
-      const blob = await res.blob();
-      const objectUrl = URL.createObjectURL(blob);
-
-      setImage({
-        src: objectUrl,
-        duration: res.headers.get("X-Duration") ?? "-",
-        filesize: prettyBytes(blob.size),
-      });
     })();
 
     return () => {

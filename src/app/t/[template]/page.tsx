@@ -1,7 +1,7 @@
 import { objectKeys } from "ts-extras";
 import { ImageCards } from "~/components/image-cards";
 import { BenchProvider } from "~/lib/bench-context";
-import { providers, templates } from "~/lib/const";
+import { templates } from "~/lib/const";
 
 export default async function TemplatePage({
   params,
@@ -10,53 +10,37 @@ export default async function TemplatePage({
 
   return (
     <BenchProvider template={template}>
-      <main className="flex flex-col min-h-screen font-mono">
-        {/* ── Hero ───────────────────────────────────────────────────── */}
-        <header className="relative border-b border-border overflow-hidden">
-          {/* Subtle grid bg */}
+      <main className="min-h-[100dvh] bg-zinc-950 text-zinc-50">
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
           <div
-            className="absolute inset-0 opacity-[0.03]"
+            className="absolute inset-0 opacity-[0.08]"
             style={{
               backgroundImage:
-                "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
+                "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+              backgroundSize: "72px 72px",
             }}
           />
-          {/* Gradient orb */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+          <div className="absolute inset-y-0 left-[-12%] w-[38rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),rgba(255,255,255,0))] blur-3xl" />
+          <div className="absolute right-[-10%] top-24 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.16),rgba(16,185,129,0))] blur-3xl" />
+        </div>
 
-          <div className="relative container mx-auto px-4 py-10 max-w-5xl">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground border border-border px-3 py-1 mb-4">
-              <span className="size-1.5 rounded-full bg-green-500 animate-pulse" />
-              {objectKeys(providers).length} providers ·{" "}
-              {objectKeys(templates).length} templates
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-              <span className="text-muted-foreground font-normal">$ </span>
+        <section className="border-b border-white/10">
+          <div className="mx-auto flex max-w-[1280px] items-end justify-between gap-4 px-4 py-5 md:px-6">
+            <h1 className="text-2xl font-semibold tracking-[-0.05em] text-zinc-50 md:text-3xl">
               image-bench
             </h1>
-
-            <p className="text-sm text-muted-foreground max-w-xl leading-relaxed">
-              Measure exactly how fast each image generation backend can render.
-              Pick a template, hit{" "}
-              <span className="text-foreground font-semibold">Run</span>, and
-              compare.{" "}
-              <a
-                href="https://github.com/kane50613/image-bench/blob/master/src/app/render/route.tsx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity"
-              >
-                View source →
-              </a>
-            </p>
+            <a
+              href="https://github.com/kane50613/image-bench/blob/master/src/app/render/route.tsx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/10 bg-white/[0.03] px-4 py-3 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-zinc-300 transition-all duration-300 hover:border-emerald-400/40 hover:text-zinc-100 active:translate-y-px"
+            >
+              Source
+            </a>
           </div>
-        </header>
+        </section>
 
-        {/* ── Bench ──────────────────────────────────────────────────── */}
-        <div className="flex-1 container mx-auto px-4 py-8 max-w-7xl">
+        <div className="mx-auto max-w-[1280px] px-4 py-5 md:px-6 md:py-6">
           <ImageCards template={template} />
         </div>
       </main>
