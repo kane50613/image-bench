@@ -3,9 +3,8 @@ export const defaultHeight = 400;
 
 export type ImageFormat = "PNG" | "WebP Lossy 75%" | "WebP Lossless";
 export type ProviderEngine =
-  | "Satori + Resvg"
   | "Satori + Sharp"
-  | "Takumi Native"
+  | "Takumi Node.js"
   | "Takumi WASM";
 
 export type ProviderMeta = {
@@ -21,9 +20,9 @@ export type ProviderMeta = {
 
 export const providers = {
   "next-og": {
-    name: "next/og",
-    url: "https://www.npmjs.com/package/@vercel/og",
-    engine: "Satori + Resvg",
+    name: "next@canary",
+    url: "https://www.npmjs.com/package/next",
+    engine: "Satori + Sharp",
     format: "PNG",
   },
   "vercel-og-sharp": {
@@ -35,19 +34,19 @@ export const providers = {
   takumi: {
     name: "Takumi",
     url: "https://takumi.kane.tw/docs",
-    engine: "Takumi Native",
+    engine: "Takumi Node.js",
     format: "PNG",
   },
   "takumi-webp-75": {
     name: "Takumi",
     url: "https://takumi.kane.tw/docs",
-    engine: "Takumi Native",
+    engine: "Takumi Node.js",
     format: "WebP Lossy 75%",
   },
   "takumi-webp": {
     name: "Takumi",
     url: "https://takumi.kane.tw/docs",
-    engine: "Takumi Native",
+    engine: "Takumi Node.js",
     format: "WebP Lossless",
   },
   "takumi-wasm": {
