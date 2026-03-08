@@ -25,12 +25,6 @@ export const providers = {
     engine: "Satori + Sharp",
     format: "PNG",
   },
-  "vercel-og-sharp": {
-    name: "@vercel/og",
-    url: "https://www.npmjs.com/package/@vercel/og",
-    engine: "Satori + Sharp",
-    format: "PNG",
-  },
   takumi: {
     name: "Takumi",
     url: "https://takumi.kane.tw/docs",

@@ -3,21 +3,20 @@ import { join } from "node:path";
 import ImageResponse from "@takumi-rs/image-response";
 import ImageResponseWasm from "@takumi-rs/image-response/wasm";
 import module from "@takumi-rs/wasm/next";
-import { ImageResponse as VercelOgSharpImageResponse } from "@vercel/og-sharp";
 import { ImageResponse as VercelImageResponse } from "next/og";
 import nstr from "nstr";
 import { createElement } from "react";
 import { objectKeys } from "ts-extras";
 import * as z from "zod/mini";
+import { AnalyticsDashboard } from "~/lib/templates/analytics";
 import Docs from "~/lib/templates/docs";
+import { Ecommerce } from "~/lib/templates/ecommerce";
 import { Gradients } from "~/lib/templates/gradients";
 import { HelloWorld } from "~/lib/templates/hello-world";
 import { Rauchg } from "~/lib/templates/rauchg";
+import { SocialPost } from "~/lib/templates/social";
 import { Tailwind } from "~/lib/templates/tailwind";
 import { Vercel } from "~/lib/templates/vercel";
-import { Ecommerce } from "~/lib/templates/ecommerce";
-import { SocialPost } from "~/lib/templates/social";
-import { AnalyticsDashboard } from "~/lib/templates/analytics";
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +25,6 @@ export const providers = {
   "takumi-webp-75": takumiWebp75Provider,
   "takumi-webp": takumiWebpProvider,
   "next-og": nextOgProvider,
-  "vercel-og-sharp": vercelOgSharpProvider,
   "takumi-wasm": takumiWasmProvider,
   "takumi-wasm-webp": takumiWasmWebpProvider,
 } as const;
@@ -162,19 +160,6 @@ function nextOgProvider(
   height: number,
 ) {
   return new VercelImageResponse(createElement(templates[template]), {
-    width,
-    height,
-    headers,
-    fonts,
-  });
-}
-
-function vercelOgSharpProvider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
-  return new VercelOgSharpImageResponse(createElement(templates[template]), {
     width,
     height,
     headers,
