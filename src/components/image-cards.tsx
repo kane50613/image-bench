@@ -30,12 +30,12 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
 
   return (
     <div className="flex w-full flex-col gap-6">
-      <div className="sticky top-0 z-20 pb-20 -mb-20 pointer-events-none">
-        <div className="space-y-3">
+      <div className="sticky top-0 z-20 pointer-events-none">
+        <div className="relative space-y-3 border-b border-white/10 bg-zinc-950 py-3 md:border-b-0 md:bg-transparent">
           <div ref={sentinelRef} className="absolute -top-px h-px w-full" />
           <div
-            className={`absolute inset-0 bg-zinc-950/84 backdrop-blur-xl [mask-image:linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-300 ${
-              isSticky ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 bg-zinc-950 md:bg-zinc-950/84 md:backdrop-blur-xl md:[mask-image:linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-300 ${
+              isSticky ? "opacity-100" : "opacity-100 md:opacity-0"
             }`}
           />
           <div className="relative grid gap-3 pointer-events-auto lg:grid-cols-[minmax(0,1fr)_auto]">
