@@ -13,8 +13,8 @@
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
-    "@takumi-rs/image-response": "^0.71.3",
-    "@takumi-rs/wasm": "^0.71.3",
+    "@takumi-rs/image-response": "^0.71.4",
+    "@takumi-rs/wasm": "^0.71.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "geist": "^1.7.0",
