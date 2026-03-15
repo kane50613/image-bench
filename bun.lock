@@ -7,8 +7,8 @@
       "dependencies": {
         "@radix-ui/react-separator": "^1.1.8",
         "@radix-ui/react-slot": "^1.2.4",
-        "@takumi-rs/image-response": "^0.73.1",
-        "@takumi-rs/wasm": "^0.73.1",
+        "@takumi-rs/image-response": "^1.0.0-beta.0",
+        "@takumi-rs/wasm": "^1.0.0-beta.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "geist": "^1.7.0",
@@ -176,29 +176,29 @@
 
     "@tailwindcss/postcss": ["@tailwindcss/postcss@4.2.1", "", { "dependencies": { "@alloc/quick-lru": "^5.2.0", "@tailwindcss/node": "4.2.1", "@tailwindcss/oxide": "4.2.1", "postcss": "^8.5.6", "tailwindcss": "4.2.1" } }, "sha512-OEwGIBnXnj7zJeonOh6ZG9woofIjGrd2BORfvE5p9USYKDCZoQmfqLcfNiRWoJlRWLdNPn2IgVZuWAOM4iTYMw=="],
 
-    "@takumi-rs/core": ["@takumi-rs/core@0.73.1", "", { "dependencies": { "@takumi-rs/helpers": "0.73.1" }, "optionalDependencies": { "@takumi-rs/core-darwin-arm64": "0.73.1", "@takumi-rs/core-darwin-x64": "0.73.1", "@takumi-rs/core-linux-arm64-gnu": "0.73.1", "@takumi-rs/core-linux-arm64-musl": "0.73.1", "@takumi-rs/core-linux-x64-gnu": "0.73.1", "@takumi-rs/core-linux-x64-musl": "0.73.1", "@takumi-rs/core-win32-arm64-msvc": "0.73.1", "@takumi-rs/core-win32-x64-msvc": "0.73.1" } }, "sha512-+8GNu0O9lDNBjXx2uM3/15zIyTCt+vI3Ltmkudacybnvl6Kx2TMokRWD9/bymg19ZVcGbfOC1FsFIGQdVePCvQ=="],
+    "@takumi-rs/core": ["@takumi-rs/core@1.0.0-beta.0", "", { "dependencies": { "@takumi-rs/helpers": "1.0.0-beta.0" }, "optionalDependencies": { "@takumi-rs/core-darwin-arm64": "1.0.0-beta.0", "@takumi-rs/core-darwin-x64": "1.0.0-beta.0", "@takumi-rs/core-linux-arm64-gnu": "1.0.0-beta.0", "@takumi-rs/core-linux-arm64-musl": "1.0.0-beta.0", "@takumi-rs/core-linux-x64-gnu": "1.0.0-beta.0", "@takumi-rs/core-linux-x64-musl": "1.0.0-beta.0", "@takumi-rs/core-win32-arm64-msvc": "1.0.0-beta.0", "@takumi-rs/core-win32-x64-msvc": "1.0.0-beta.0" } }, "sha512-ERPJLZ0D1V9it0UnJw8E9UUKotiyPLmVPimoeGncWL7UdRzZaZ93pOpH9fhdZoMTfPfnSeYpWkgb67z+Lz3d0A=="],
 
-    "@takumi-rs/core-darwin-arm64": ["@takumi-rs/core-darwin-arm64@0.73.1", "", { "os": "darwin", "cpu": "arm64" }, "sha512-6DQZ7XM6GArr32n9k6Es3/1X0gJHEnVSdUTVUPVGRQrCmscjV07zrTNXn8VoU81XIl5uHQpRgUT9HhaLPbd/ew=="],
+    "@takumi-rs/core-darwin-arm64": ["@takumi-rs/core-darwin-arm64@1.0.0-beta.0", "", { "os": "darwin", "cpu": "arm64" }, "sha512-DJJz7l0FrnpittEoTu9O9vw2PmIcGlUTl3PfErPdIvEnjfdacwwh9z7nFefLnXqqo4aCrWVVgpdeLlDUc9BTwA=="],
 
-    "@takumi-rs/core-darwin-x64": ["@takumi-rs/core-darwin-x64@0.73.1", "", { "os": "darwin", "cpu": "x64" }, "sha512-GUggPolYTa2bAuWu3aqZZCSzCo+ZGFsLKzW+pkc6D8n+PrWCko25vbMpkNhG7Cz5a7UcuWUaTba8rBejNKF/HQ=="],
+    "@takumi-rs/core-darwin-x64": ["@takumi-rs/core-darwin-x64@1.0.0-beta.0", "", { "os": "darwin", "cpu": "x64" }, "sha512-7B32zEP+O9Va0382/LUE9ZkBePBPcI0FdV4A4HLC3MQzbSF42t1/KwFodbnV6YJ+O7Wl4YW3/hVlKvnBo0dyfg=="],
 
-    "@takumi-rs/core-linux-arm64-gnu": ["@takumi-rs/core-linux-arm64-gnu@0.73.1", "", { "os": "linux", "cpu": "arm64" }, "sha512-NEVs6lu1MeKlZKJjOJdp3pL/lyLpOCr2QHp4zIH4eM5r4kZi2uFj4jgv4U9fqWtiwJaaSdaox4/ffkzBsYcFbw=="],
+    "@takumi-rs/core-linux-arm64-gnu": ["@takumi-rs/core-linux-arm64-gnu@1.0.0-beta.0", "", { "os": "linux", "cpu": "arm64" }, "sha512-HWyxgc1BtNzm2BjHUFfYUu5mZAn8fpMJIEMn1WgHtQX5/a7ubsjzAxBXK/J42IMtBBLpcxGoyXTbZfeXynHrVg=="],
 
-    "@takumi-rs/core-linux-arm64-musl": ["@takumi-rs/core-linux-arm64-musl@0.73.1", "", { "os": "linux", "cpu": "arm64" }, "sha512-idzxH2JcUo+yD2t7OexbPB5DN+1x88GcpDKoJVvwc2nOxr7KQGdGqALVBOe5i2mNnkUSIr/ZeBz7yBII5bA6ag=="],
+    "@takumi-rs/core-linux-arm64-musl": ["@takumi-rs/core-linux-arm64-musl@1.0.0-beta.0", "", { "os": "linux", "cpu": "arm64" }, "sha512-rQUXh8HYAlFUyXZc+syD+TvCxnWP/NH8fVAVo6dNnvtDkeGknHZnRUBw6IlvIgcDob97nOak46/p0lomVGwBbw=="],
 
-    "@takumi-rs/core-linux-x64-gnu": ["@takumi-rs/core-linux-x64-gnu@0.73.1", "", { "os": "linux", "cpu": "x64" }, "sha512-XSOf9b0F5lUScBcGegr8PQWuEJXeFdG7rsZLe1MvTVOzrmzqEhLnaK4xckV1ykWF5qWCf78yArqLt+C7mf+u6Q=="],
+    "@takumi-rs/core-linux-x64-gnu": ["@takumi-rs/core-linux-x64-gnu@1.0.0-beta.0", "", { "os": "linux", "cpu": "x64" }, "sha512-aOUH2iQqIMrTF+9mPWy8bexRr8JMLKkw6yiJVnPNCdEcFWP1juUK5MqcPSY4Gahg7Vi/a5PT0Cf56Qq98s8ONg=="],
 
-    "@takumi-rs/core-linux-x64-musl": ["@takumi-rs/core-linux-x64-musl@0.73.1", "", { "os": "linux", "cpu": "x64" }, "sha512-rHsvVVT+m4+zaIjJxp2dn8ibvjCtXRasByMii6st7zRwioQIibCAMq/Ik/uVcPFpeMBhyai6mGZe0NTWq23ZEA=="],
+    "@takumi-rs/core-linux-x64-musl": ["@takumi-rs/core-linux-x64-musl@1.0.0-beta.0", "", { "os": "linux", "cpu": "x64" }, "sha512-qfnJ2z7gfOIt+2kZa52JhhPFDqkA57GgJ43xoDA2nufwmjmF9Wp2MzVoyIkPzLdM6uELppz5Upf+Agn5QhbNoQ=="],
 
-    "@takumi-rs/core-win32-arm64-msvc": ["@takumi-rs/core-win32-arm64-msvc@0.73.1", "", { "os": "win32", "cpu": "arm64" }, "sha512-YEA79NFEAgCI2bs0L/xRWMlBHo8Z1q+Oy/7pPxu4F7Qxy5JVGYwd3UDKnf01os2eNfdNmMI+7t0F5sderk6hiQ=="],
+    "@takumi-rs/core-win32-arm64-msvc": ["@takumi-rs/core-win32-arm64-msvc@1.0.0-beta.0", "", { "os": "win32", "cpu": "arm64" }, "sha512-ML9cDJUUal8BsN0pfmU2t/te5N8veBDZOl8663nCZTIZMHdZxnhdm8ldDoouob96AoUvkE4hBe+rqDnOoExNLQ=="],
 
-    "@takumi-rs/core-win32-x64-msvc": ["@takumi-rs/core-win32-x64-msvc@0.73.1", "", { "os": "win32", "cpu": "x64" }, "sha512-/vluH32+cST6CBM1n1XUTjnRCkfDmQxqRrM1v8Ccpv1aKHrYdh2BRz47oY2hFiEcO4jyP36lmhPvDUS8odVaFw=="],
+    "@takumi-rs/core-win32-x64-msvc": ["@takumi-rs/core-win32-x64-msvc@1.0.0-beta.0", "", { "os": "win32", "cpu": "x64" }, "sha512-EmoEhPQt1FHKWCOFIC7LFhJZPNe/AfBaRifcbsUdzuo9F69XiZP+PvCcDIxnYJS3niQNQ39CUT+nbYTrRE9ZEw=="],
 
-    "@takumi-rs/helpers": ["@takumi-rs/helpers@0.73.1", "", {}, "sha512-OONKM9+XtiRp7s2e3kwbnTyF9cYqk6L8d7Q2KG449OjphdlhuCZhVwmpqHI2nHEgL1TLC2LEHzxJHvfyAIdNBw=="],
+    "@takumi-rs/helpers": ["@takumi-rs/helpers@1.0.0-beta.0", "", {}, "sha512-CZ2878ME77ruAvEX65yM+EyZ+4zGHBxk3sxm0cepa6fQP7PvE8PBNMNrp/h0jW3dEUltMrhvMSyhZOFWBgOMHQ=="],
 
-    "@takumi-rs/image-response": ["@takumi-rs/image-response@0.73.1", "", { "dependencies": { "@takumi-rs/core": "0.73.1", "@takumi-rs/helpers": "0.73.1", "@takumi-rs/wasm": "0.73.1" } }, "sha512-5/Sl1fgnQNG8FPsWgLeHiSpkh1DACKkYxDXcc/6suJq5IhPU4l4ydo8q4aP9zVmD4QSQfu69Jy7Leabx5tonJQ=="],
+    "@takumi-rs/image-response": ["@takumi-rs/image-response@1.0.0-beta.0", "", { "dependencies": { "@takumi-rs/core": "1.0.0-beta.0", "@takumi-rs/helpers": "1.0.0-beta.0", "@takumi-rs/wasm": "1.0.0-beta.0" } }, "sha512-w1Gg790/pE3Ydfuvjb4330wBGsmox33SkF9TeFG28AyI9qC3Z5x3gYhLcc+IdnFUkBaZEmmscKuVUdWYdRtt2Q=="],
 
-    "@takumi-rs/wasm": ["@takumi-rs/wasm@0.73.1", "", { "dependencies": { "@takumi-rs/helpers": "0.73.1" } }, "sha512-WDrstyQettPQSmYDyj7lrJMKlm3E5dg0ZC+PFvKTdfP4aMTZgWBchIL3MfdUwpRIRf96sdL+pAdrwI42X9iRXg=="],
+    "@takumi-rs/wasm": ["@takumi-rs/wasm@1.0.0-beta.0", "", { "dependencies": { "@takumi-rs/helpers": "1.0.0-beta.0" } }, "sha512-wCHfdRUa0a/5fxnw/hgdPqqx+iTAaq2AnRKq0pNaKvLNf0eG2epfRHJUGEoQXxPEKn2lRm1m4QZDH5tK81sw6w=="],
 
     "@types/node": ["@types/node@25.5.0", "", { "dependencies": { "undici-types": "~7.18.0" } }, "sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw=="],
 
