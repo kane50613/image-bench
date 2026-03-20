@@ -20,7 +20,7 @@ export type ProviderMeta = {
 
 export const providers = {
   "next-og": {
-    name: "next@canary",
+    name: "next",
     url: "https://www.npmjs.com/package/next",
     engine: "Satori + Sharp",
     format: "PNG",
