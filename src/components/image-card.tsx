@@ -2,13 +2,7 @@
 
 import { useEffect } from "react";
 import { useBench } from "~/lib/bench-context";
-import {
-  defaultHeight,
-  defaultWidth,
-  type ImageFormat,
-  providers,
-  templates,
-} from "~/lib/const";
+import { defaultHeight, defaultWidth, type ImageFormat, providers, templates } from "~/lib/const";
 import { useImage } from "~/lib/use-image";
 import { Skeleton } from "./ui/skeleton";
 
@@ -27,13 +21,7 @@ export function ImageCard({
 }) {
   const { refreshKey, fastestProvider, recordDuration, durations } = useBench();
   const meta = providers[provider];
-  const image = useImage(
-    provider,
-    template,
-    defaultWidth,
-    defaultHeight,
-    refreshKey,
-  );
+  const image = useImage(provider, template, defaultWidth, defaultHeight, refreshKey);
   const isFastest = provider === fastestProvider;
   const duration = durations[provider];
   const aspectRatio = defaultWidth / defaultHeight;
@@ -47,9 +35,7 @@ export function ImageCard({
   return (
     <article
       className={`group overflow-hidden border bg-white/[0.02] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 ${
-        isFastest
-          ? "border-emerald-400/45"
-          : "border-white/10 hover:border-white/16"
+        isFastest ? "border-emerald-400/45" : "border-white/10 hover:border-white/16"
       }`}
     >
       <div className="flex items-start justify-between gap-3 border-b border-white/10 px-4 py-3">
@@ -69,9 +55,7 @@ export function ImageCard({
               </span>
             )}
           </div>
-          <p className="mt-1 truncate text-[0.95rem] text-zinc-300">
-            {meta.engine}
-          </p>
+          <p className="mt-1 truncate text-[0.95rem] text-zinc-300">{meta.engine}</p>
         </div>
 
         <span
@@ -83,10 +67,7 @@ export function ImageCard({
 
       <div className="relative bg-zinc-950">
         {image?.error ? (
-          <div
-            className="grid place-items-center px-6 text-center"
-            style={{ aspectRatio }}
-          >
+          <div className="grid place-items-center px-6 text-center" style={{ aspectRatio }}>
             <div className="space-y-2">
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-zinc-600">
                 Render failed
@@ -104,10 +85,7 @@ export function ImageCard({
             height={defaultHeight}
           />
         ) : (
-          <Skeleton
-            className="w-full rounded-none bg-white/[0.04]"
-            style={{ aspectRatio }}
-          />
+          <Skeleton className="w-full rounded-none bg-white/[0.04]" style={{ aspectRatio }} />
         )}
       </div>
 
@@ -124,9 +102,7 @@ export function ImageCard({
           <p className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-zinc-500">
             File size
           </p>
-          <p className="mt-2 text-base tracking-[-0.03em] text-zinc-50">
-            {image?.filesize ?? "—"}
-          </p>
+          <p className="mt-2 text-base tracking-[-0.03em] text-zinc-50">{image?.filesize ?? "—"}</p>
         </div>
         <div className="bg-zinc-950/90 px-4 py-3">
           <p className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-zinc-500">

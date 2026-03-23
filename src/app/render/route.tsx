@@ -73,9 +73,7 @@ const fonts = await Promise.all(
     },
   ].map(async ({ name, fileName, weight }) => ({
     name,
-    data: await readFile(
-      join(process.cwd(), "public", "fonts", "geist", fileName),
-    ),
+    data: await readFile(join(process.cwd(), "public", "fonts", "geist", fileName)),
     weight,
     style: "normal" as const,
   })),
@@ -105,11 +103,7 @@ export async function GET(request: Request) {
   return new Response(buffer, { headers });
 }
 
-function takumiProvider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
+function takumiProvider(template: keyof typeof templates, width: number, height: number) {
   return new ImageResponse(createElement(templates[template]), {
     width,
     height,
@@ -119,11 +113,7 @@ function takumiProvider(
   });
 }
 
-function takumiWebpProvider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
+function takumiWebpProvider(template: keyof typeof templates, width: number, height: number) {
   return new ImageResponse(createElement(templates[template]), {
     width,
     height,
@@ -134,11 +124,7 @@ function takumiWebpProvider(
   });
 }
 
-function nextOgProvider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
+function nextOgProvider(template: keyof typeof templates, width: number, height: number) {
   return new VercelImageResponse(createElement(templates[template]), {
     width,
     height,

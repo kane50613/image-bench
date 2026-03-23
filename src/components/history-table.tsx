@@ -14,8 +14,7 @@ export function HistoryTable() {
           No saved runs
         </p>
         <p className="mt-3 text-sm text-zinc-400">
-          Run the benchmark once and the results grid will start building a
-          comparison history here.
+          Run the benchmark once and the results grid will start building a comparison history here.
         </p>
       </div>
     );
@@ -30,9 +29,7 @@ export function HistoryTable() {
             <th className="px-4 py-4 font-medium">Template</th>
             {objectKeys(providers).map((providerKey) => (
               <th key={providerKey} className="px-4 py-4 font-medium">
-                <span className="block text-zinc-400">
-                  {providers[providerKey].name}
-                </span>
+                <span className="block text-zinc-400">{providers[providerKey].name}</span>
                 <span className="mt-1 block normal-case tracking-normal text-zinc-600">
                   {providers[providerKey].format}
                 </span>
@@ -45,9 +42,7 @@ export function HistoryTable() {
             let fastestProvider: string | null = null;
             let fastestDuration = Number.POSITIVE_INFINITY;
 
-            for (const [providerKey, value] of Object.entries(
-              entry.durations,
-            )) {
+            for (const [providerKey, value] of Object.entries(entry.durations)) {
               if (value < fastestDuration) {
                 fastestDuration = value;
                 fastestProvider = providerKey;
@@ -59,9 +54,7 @@ export function HistoryTable() {
                 key={entry.id}
                 className="border-b border-white/10 text-zinc-300 transition-colors duration-300 hover:bg-white/[0.03]"
               >
-                <td className="px-4 py-4 font-medium text-zinc-100">
-                  #{entry.id}
-                </td>
+                <td className="px-4 py-4 font-medium text-zinc-100">#{entry.id}</td>
                 <td className="px-4 py-4 text-zinc-500">{entry.template}</td>
                 {objectKeys(providers).map((providerKey) => {
                   const duration = entry.durations[providerKey];
@@ -73,9 +66,7 @@ export function HistoryTable() {
                       ) : (
                         <span
                           className={`inline-flex items-center gap-2 ${
-                            providerKey === fastestProvider
-                              ? "text-emerald-300"
-                              : "text-zinc-300"
+                            providerKey === fastestProvider ? "text-emerald-300" : "text-zinc-300"
                           }`}
                         >
                           <span>{duration.toFixed(1)}</span>

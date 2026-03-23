@@ -7,9 +7,7 @@ await init({
   module_or_path: module,
 });
 
-for (const templateName of Object.keys(templates) as Array<
-  keyof typeof templates
->) {
+for (const templateName of Object.keys(templates) as Array<keyof typeof templates>) {
   summary(() => {
     group(templateName, () => {
       for (const [providerName, providerFn] of Object.entries(providers)) {

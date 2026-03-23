@@ -52,9 +52,7 @@ export function Ecommerce() {
           boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
         }}
       >
-        <span style={{ fontSize: "24px", fontWeight: 700, color: "#111" }}>
-          TechStore
-        </span>
+        <span style={{ fontSize: "24px", fontWeight: 700, color: "#111" }}>TechStore</span>
         <div style={{ display: "flex", gap: "16px" }}>
           <span style={{ fontSize: "16px", color: "#4b5563" }}>Categories</span>
           <span style={{ fontSize: "16px", color: "#4b5563" }}>Deals</span>
@@ -121,13 +119,9 @@ export function Ecommerce() {
                 >
                   {p.price}
                 </span>
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "4px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                   <Star size={16} fill="currentColor" color="#fbbf24" />
-                  <span style={{ fontSize: "14px", color: "#6b7280" }}>
-                    {p.rating}
-                  </span>
+                  <span style={{ fontSize: "14px", color: "#6b7280" }}>{p.rating}</span>
                 </div>
               </div>
             </div>

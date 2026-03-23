@@ -121,23 +121,17 @@ export function SocialPost() {
             </span>
 
             <div style={{ display: "flex", gap: "40px", color: "#8899a6" }}>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <MessageCircle size={18} />
                 <span style={{ fontSize: "18px" }}>{post.comments}</span>
               </div>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Repeat2 size={18} />
                 <span style={{ fontSize: "18px" }}>
                   {Math.floor(Number.parseInt(post.likes, 10) / 4)}
                 </span>
               </div>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Heart size={18} />
                 <span style={{ fontSize: "18px" }}>{post.likes}</span>
               </div>

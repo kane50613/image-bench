@@ -4,8 +4,7 @@ const primaryColor = "#93C0A4";
 const primaryTextColor = "#ffffff";
 const site = "image-bench.kane.tw";
 const title = "Image Bench";
-const description =
-  "Image Bench is a site for showcasing different image rendering tools.";
+const description = "Image Bench is a site for showcasing different image rendering tools.";
 const icon = <Globe2 color="white" />;
 
 export default function Docs() {

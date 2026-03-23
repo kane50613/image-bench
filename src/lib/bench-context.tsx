@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { objectKeys } from "ts-extras";
 import { providers, type templates } from "~/lib/const";
 
@@ -77,8 +70,7 @@ export function BenchProvider({
 
     if (isComplete && recordedRunRef.current !== runKey) {
       setHistory((prev) => {
-        const nextId =
-          prev.length > 0 ? Math.max(...prev.map((e) => e.id)) + 1 : 1;
+        const nextId = prev.length > 0 ? Math.max(...prev.map((e) => e.id)) + 1 : 1;
         const entry: HistoryEntry = {
           id: nextId,
           template,
@@ -113,15 +105,12 @@ export function BenchProvider({
     setDurations({});
   }, []);
 
-  const recordDuration = useCallback(
-    (provider: string, durationStr: string) => {
-      const d = parseFloat(durationStr);
-      if (!Number.isNaN(d)) {
-        setDurations((prev) => ({ ...prev, [provider]: d }));
-      }
-    },
-    [],
-  );
+  const recordDuration = useCallback((provider: string, durationStr: string) => {
+    const d = parseFloat(durationStr);
+    if (!Number.isNaN(d)) {
+      setDurations((prev) => ({ ...prev, [provider]: d }));
+    }
+  }, []);
 
   return (
     <BenchContext.Provider

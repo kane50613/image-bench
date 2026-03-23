@@ -15,9 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${GeistSans.className} ${GeistMono.className} antialiased`}
-      >
+      <body className={`${GeistSans.className} ${GeistMono.className} antialiased`}>
         {children}
       </body>
     </html>

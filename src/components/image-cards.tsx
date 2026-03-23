@@ -16,10 +16,9 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
   const providerKeys = objectKeys(providers);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsSticky(!entry.isIntersecting),
-      { threshold: 0 },
-    );
+    const observer = new IntersectionObserver(([entry]) => setIsSticky(!entry.isIntersecting), {
+      threshold: 0,
+    });
 
     if (sentinelRef.current) {
       observer.observe(sentinelRef.current);
@@ -74,11 +73,7 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
 
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {providerKeys.map((providerKey) => (
-          <ImageCard
-            key={providerKey}
-            provider={providerKey}
-            template={template}
-          />
+          <ImageCard key={providerKey} provider={providerKey} template={template} />
         ))}
       </div>
 

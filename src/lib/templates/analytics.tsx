@@ -98,9 +98,7 @@ export function AnalyticsDashboard() {
               >
                 {m.change}
               </span>
-              <span style={{ fontSize: "12px", color: "#9ca3af" }}>
-                from last month
-              </span>
+              <span style={{ fontSize: "12px", color: "#9ca3af" }}>from last month</span>
             </div>
           </div>
         ))}

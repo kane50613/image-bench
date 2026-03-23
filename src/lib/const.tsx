@@ -2,9 +2,7 @@ export const defaultWidth = 800;
 export const defaultHeight = 400;
 
 export type ImageFormat = "PNG" | "WebP Lossy 75%" | "WebP Lossless";
-export type ProviderEngine =
-  | "Satori + Sharp"
-  | "Takumi";
+export type ProviderEngine = "Satori + Sharp" | "Takumi";
 
 export type ProviderMeta = {
   /** Short display name of the library */

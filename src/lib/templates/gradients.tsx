@@ -17,8 +17,7 @@ export function Gradients() {
     >
       <div
         style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))",
+          backgroundImage: "linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216))",
           backgroundClip: "text",
           color: "transparent",
         }}
@@ -27,8 +26,7 @@ export function Gradients() {
       </div>
       <div
         style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))",
+          backgroundImage: "linear-gradient(90deg, rgb(121, 40, 202), rgb(255, 0, 128))",
           backgroundClip: "text",
           color: "transparent",
         }}
@@ -37,8 +35,7 @@ export function Gradients() {
       </div>
       <div
         style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgb(255, 77, 77), rgb(249, 203, 40))",
+          backgroundImage: "linear-gradient(90deg, rgb(255, 77, 77), rgb(249, 203, 40))",
           backgroundClip: "text",
           color: "transparent",
         }}

@@ -3,9 +3,7 @@ import { ImageCards } from "~/components/image-cards";
 import { BenchProvider } from "~/lib/bench-context";
 import { templates } from "~/lib/const";
 
-export default async function TemplatePage({
-  params,
-}: PageProps<"/t/[template]">) {
+export default async function TemplatePage({ params }: PageProps<"/t/[template]">) {
   const template = (await params).template as keyof typeof templates;
 
   return (

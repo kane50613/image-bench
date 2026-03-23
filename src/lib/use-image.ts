@@ -70,9 +70,7 @@ export function useImage(
     })();
 
     return () => {
-      abortControllerRef.current?.abort(
-        "The image fetching is aborted by the user",
-      );
+      abortControllerRef.current?.abort("The image fetching is aborted by the user");
       // Cleanup previous blob URL
       setImage((prevImage) => {
         if (prevImage?.src) {
