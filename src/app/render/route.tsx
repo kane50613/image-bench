@@ -1,7 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import ImageResponse from "@takumi-rs/image-response";
-import module from "@takumi-rs/wasm/next";
 import { ImageResponse as VercelImageResponse } from "next/og";
 import nstr from "nstr";
 import { createElement } from "react";
@@ -21,11 +20,8 @@ export const dynamic = "force-dynamic";
 
 export const providers = {
   takumi: takumiProvider,
-  "takumi-webp-75": takumiWebp75Provider,
   "takumi-webp": takumiWebpProvider,
   "next-og": nextOgProvider,
-  "takumi-wasm": takumiWasmProvider,
-  "takumi-wasm-webp": takumiWasmWebpProvider,
 } as const;
 
 export const templates = {
@@ -123,21 +119,6 @@ function takumiProvider(
   });
 }
 
-function takumiWebp75Provider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
-  return new ImageResponse(createElement(templates[template]), {
-    width,
-    height,
-    format: "webp",
-    quality: 75,
-    headers,
-    fonts,
-  });
-}
-
 function takumiWebpProvider(
   template: keyof typeof templates,
   width: number,
@@ -161,36 +142,6 @@ function nextOgProvider(
   return new VercelImageResponse(createElement(templates[template]), {
     width,
     height,
-    headers,
-    fonts,
-  });
-}
-
-function takumiWasmProvider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
-  return new ImageResponse(createElement(templates[template]), {
-    width,
-    height,
-    format: "png",
-    module,
-    headers,
-    fonts,
-  });
-}
-
-function takumiWasmWebpProvider(
-  template: keyof typeof templates,
-  width: number,
-  height: number,
-) {
-  return new ImageResponse(createElement(templates[template]), {
-    width,
-    height,
-    format: "webp",
-    module,
     headers,
     fonts,
   });

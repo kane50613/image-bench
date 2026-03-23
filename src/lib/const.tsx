@@ -4,8 +4,7 @@ export const defaultHeight = 400;
 export type ImageFormat = "PNG" | "WebP Lossy 75%" | "WebP Lossless";
 export type ProviderEngine =
   | "Satori + Sharp"
-  | "Takumi Node.js"
-  | "Takumi WASM";
+  | "Takumi";
 
 export type ProviderMeta = {
   /** Short display name of the library */
@@ -28,31 +27,13 @@ export const providers = {
   takumi: {
     name: "Takumi",
     url: "https://takumi.kane.tw/docs",
-    engine: "Takumi Node.js",
+    engine: "Takumi",
     format: "PNG",
-  },
-  "takumi-webp-75": {
-    name: "Takumi",
-    url: "https://takumi.kane.tw/docs",
-    engine: "Takumi Node.js",
-    format: "WebP Lossy 75%",
   },
   "takumi-webp": {
     name: "Takumi",
     url: "https://takumi.kane.tw/docs",
-    engine: "Takumi Node.js",
-    format: "WebP Lossless",
-  },
-  "takumi-wasm": {
-    name: "Takumi",
-    url: "https://takumi.kane.tw/docs",
-    engine: "Takumi WASM",
-    format: "PNG",
-  },
-  "takumi-wasm-webp": {
-    name: "Takumi",
-    url: "https://takumi.kane.tw/docs",
-    engine: "Takumi WASM",
+    engine: "Takumi",
     format: "WebP Lossless",
   },
 } as const satisfies Record<string, ProviderMeta>;
