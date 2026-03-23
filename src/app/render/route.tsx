@@ -1,7 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import ImageResponse from "@takumi-rs/image-response";
-import ImageResponseWasm from "@takumi-rs/image-response/wasm";
 import module from "@takumi-rs/wasm/next";
 import { ImageResponse as VercelImageResponse } from "next/og";
 import nstr from "nstr";
@@ -172,7 +171,7 @@ function takumiWasmProvider(
   width: number,
   height: number,
 ) {
-  return new ImageResponseWasm(createElement(templates[template]), {
+  return new ImageResponse(createElement(templates[template]), {
     width,
     height,
     format: "png",
@@ -187,7 +186,7 @@ function takumiWasmWebpProvider(
   width: number,
   height: number,
 ) {
-  return new ImageResponseWasm(createElement(templates[template]), {
+  return new ImageResponse(createElement(templates[template]), {
     width,
     height,
     format: "webp",
