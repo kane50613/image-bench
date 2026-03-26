@@ -33,7 +33,7 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
         <div className="relative space-y-3 border-b border-white/10 bg-zinc-950 py-3 md:border-b-0 md:bg-transparent">
           <div ref={sentinelRef} className="absolute -top-px h-px w-full" />
           <div
-            className={`absolute inset-0 bg-zinc-950 md:bg-zinc-950/84 md:backdrop-blur-xl md:[mask-image:linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-300 ${
+            className={`absolute inset-0 bg-zinc-950 md:bg-zinc-950/84 md:backdrop-blur-xl md:mask-[linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-300 ${
               isSticky ? "opacity-100" : "opacity-100 md:opacity-0"
             }`}
           />

@@ -1,5 +1,3 @@
-import { Star } from "lucide-react";
-
 export function Ecommerce() {
   const products = [
     {
@@ -119,10 +117,9 @@ export function Ecommerce() {
                 >
                   {p.price}
                 </span>
-                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <Star size={16} fill="currentColor" color="#fbbf24" />
-                  <span style={{ fontSize: "14px", color: "#6b7280" }}>{p.rating}</span>
-                </div>
+                <span style={{ fontSize: "14px", color: "#6b7280", whiteSpace: "pre" }}>
+                  ⭐ {p.rating}
+                </span>
               </div>
             </div>
           </div>

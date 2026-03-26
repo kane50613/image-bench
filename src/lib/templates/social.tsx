@@ -1,5 +1,3 @@
-import { Heart, MessageCircle, Repeat2, Rocket, Sparkles } from "lucide-react";
-
 export function SocialPost() {
   const posts = [
     {
@@ -102,37 +100,25 @@ export function SocialPost() {
                 color: "#ffffff",
                 lineHeight: "1.5",
                 marginBottom: "20px",
+                whiteSpace: "pre-wrap",
               }}
             >
               {post.content}
-              {post.showIcons && (
-                <span
-                  style={{
-                    display: "flex",
-                    gap: "4px",
-                    marginLeft: "8px",
-                    color: "#fcd34d",
-                  }}
-                >
-                  <Rocket size={22} />
-                  <Sparkles size={22} />
-                </span>
-              )}
+              {post.showIcons && " 🚀🔥"}
             </span>
 
-            <div style={{ display: "flex", gap: "40px", color: "#8899a6" }}>
+            <div style={{ display: "flex", gap: 24, color: "#8899a6" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <MessageCircle size={18} />
-                <span style={{ fontSize: "18px" }}>{post.comments}</span>
+                💬<span style={{ fontSize: "18px" }}>{post.comments}</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Repeat2 size={18} />
+                🔁
                 <span style={{ fontSize: "18px" }}>
                   {Math.floor(Number.parseInt(post.likes, 10) / 4)}
                 </span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Heart size={18} />
+                ❤️
                 <span style={{ fontSize: "18px" }}>{post.likes}</span>
               </div>
             </div>

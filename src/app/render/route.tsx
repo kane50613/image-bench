@@ -110,6 +110,7 @@ function takumiProvider(template: keyof typeof templates, width: number, height:
     format: "png",
     headers,
     fonts,
+    emoji: "twemoji",
   });
 }
 
@@ -121,6 +122,7 @@ function takumiWebpProvider(template: keyof typeof templates, width: number, hei
     quality: 100,
     headers,
     fonts,
+    emoji: "twemoji",
   });
 }
 
@@ -130,5 +132,6 @@ function nextOgProvider(template: keyof typeof templates, width: number, height:
     height,
     headers,
     fonts,
+    emoji: "twemoji",
   });
 }
