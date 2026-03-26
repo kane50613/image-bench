@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  outputFileTracingIncludes: {
-    "/*": ["node_modules/@takumi-rs/core-*/*"],
-  },
+  serverExternalPackages: ["@takumi-rs/core"],
   turbopack: {
     root: import.meta.dirname,
   },
