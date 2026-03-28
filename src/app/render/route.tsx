@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import ImageResponse from "@takumi-rs/image-response";
+import ImageResponse from "takumi-js/response";
 import { ImageResponse as VercelImageResponse } from "next/og";
 import nstr from "nstr";
 import { createElement } from "react";

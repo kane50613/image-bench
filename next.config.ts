@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["@takumi-rs/core"],
+  serverExternalPackages: ["takumi-js"],
   turbopack: {
     root: import.meta.dirname,
   },
