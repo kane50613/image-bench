@@ -1,4 +1,4 @@
-const primaryColor = "#93C0A4";
+const primaryColor = "#00689c";
 const primaryTextColor = "#ffffff";
 const site = "image-bench.kane.tw";
 const title = "Image Bench";
@@ -75,7 +75,7 @@ export default function Docs() {
           <span
             style={{
               fontSize: 32,
-              color: "#a1a1aa",
+              color: "#c2c2c2",
               fontWeight: 400,
               lineHeight: 1.4,
               maxWidth: "95%",
