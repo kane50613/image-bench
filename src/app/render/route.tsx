@@ -103,6 +103,8 @@ export async function GET(request: Request) {
   return new Response(buffer, { headers });
 }
 
+const fetchCache = new Map();
+
 function takumiProvider(template: keyof typeof templates, width: number, height: number) {
   return new ImageResponse(createElement(templates[template]), {
     width,
@@ -111,6 +113,9 @@ function takumiProvider(template: keyof typeof templates, width: number, height:
     headers,
     fonts,
     emoji: "twemoji",
+    resourcesOptions: {
+      cache: fetchCache,
+    },
   });
 }
 
@@ -123,6 +128,9 @@ function takumiWebpProvider(template: keyof typeof templates, width: number, hei
     headers,
     fonts,
     emoji: "twemoji",
+    resourcesOptions: {
+      cache: fetchCache,
+    },
   });
 }
 
