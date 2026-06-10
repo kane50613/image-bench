@@ -2,42 +2,48 @@
 
 import { objectKeys } from "ts-extras";
 import { useBench } from "~/lib/bench-context";
-import { providers } from "~/lib/const";
+import { providers, runtimes } from "~/lib/const";
 
 export function HistoryTable() {
   const { history } = useBench();
 
   if (history.length === 0) {
     return (
-      <div className="border border-dashed border-white/10 px-6 py-10 text-center">
-        <p className="font-mono text-[0.68rem] uppercase tracking-[0.24em] text-zinc-600">
-          No saved runs
-        </p>
-        <p className="mt-3 text-sm text-zinc-400">
+      <div className="rounded-2xl border border-dashed border-gray-200 px-6 py-10 text-center dark:border-white/15">
+        <p className="text-sm font-medium">No saved runs</p>
+        <p className="mt-1.5 text-sm text-gray-500 dark:text-gray-400">
           Run the benchmark once and the results grid will start building a comparison history here.
         </p>
       </div>
     );
   }
 
+  // Only show columns for providers that appear in saved runs
+  const usedProviders = objectKeys(providers).filter((providerKey) =>
+    history.some((entry) => entry.durations[providerKey] != null),
+  );
+
   return (
-    <div className="overflow-x-auto border border-white/10 bg-white/[0.03] no-scrollbar">
+    <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white no-scrollbar dark:border-white/10 dark:bg-white/5">
       <table className="min-w-full border-collapse whitespace-nowrap text-left text-sm">
-        <thead className="border-b border-white/10">
-          <tr className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-zinc-500">
-            <th className="px-4 py-4 font-medium">Run</th>
-            <th className="px-4 py-4 font-medium">Template</th>
-            {objectKeys(providers).map((providerKey) => (
-              <th key={providerKey} className="px-4 py-4 font-medium">
-                <span className="block text-zinc-400">{providers[providerKey].name}</span>
-                <span className="mt-1 block normal-case tracking-normal text-zinc-600">
-                  {providers[providerKey].format}
+        <thead className="border-b border-gray-100 dark:border-white/10">
+          <tr className="text-xs font-medium text-gray-500 dark:text-gray-400">
+            <th className="px-5 py-3.5 font-medium">Run</th>
+            <th className="px-5 py-3.5 font-medium">Template</th>
+            <th className="px-5 py-3.5 font-medium">Runtime</th>
+            {usedProviders.map((providerKey) => (
+              <th key={providerKey} className="px-5 py-3.5 font-medium">
+                <span className="block text-gray-700 dark:text-gray-200">
+                  {providers[providerKey].name}
+                </span>
+                <span className="mt-0.5 block font-normal text-gray-400 dark:text-gray-500">
+                  {providers[providerKey].engine} · {providers[providerKey].format}
                 </span>
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-gray-100 dark:divide-white/10">
           {history.map((entry) => {
             let fastestProvider: string | null = null;
             let fastestDuration = Number.POSITIVE_INFINITY;
@@ -52,26 +58,33 @@ export function HistoryTable() {
             return (
               <tr
                 key={entry.id}
-                className="border-b border-white/10 text-zinc-300 transition-colors duration-300 hover:bg-white/[0.03]"
+                className="text-gray-600 transition-colors duration-200 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-white/5"
               >
-                <td className="px-4 py-4 font-medium text-zinc-100">#{entry.id}</td>
-                <td className="px-4 py-4 text-zinc-500">{entry.template}</td>
-                {objectKeys(providers).map((providerKey) => {
+                <td className="px-5 py-3.5 font-medium text-gray-900 dark:text-white">
+                  #{entry.id}
+                </td>
+                <td className="px-5 py-3.5 text-gray-500 dark:text-gray-400">{entry.template}</td>
+                <td className="px-5 py-3.5 text-gray-500 dark:text-gray-400">
+                  {runtimes[entry.runtime].label}
+                </td>
+                {usedProviders.map((providerKey) => {
                   const duration = entry.durations[providerKey];
 
                   return (
-                    <td key={providerKey} className="px-4 py-4">
+                    <td key={providerKey} className="px-5 py-3.5">
                       {duration == null ? (
-                        <span className="text-zinc-600">—</span>
+                        <span className="text-gray-300 dark:text-gray-600">—</span>
                       ) : (
                         <span
                           className={`inline-flex items-center gap-2 ${
-                            providerKey === fastestProvider ? "text-emerald-300" : "text-zinc-300"
+                            providerKey === fastestProvider
+                              ? "font-medium text-gray-900 dark:text-white"
+                              : ""
                           }`}
                         >
                           <span>{duration.toFixed(1)}</span>
                           {providerKey === fastestProvider && (
-                            <span className="font-mono text-[0.62rem] uppercase tracking-[0.2em]">
+                            <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
                               Fastest
                             </span>
                           )}

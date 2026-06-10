@@ -8,37 +8,27 @@ export default async function TemplatePage({ params }: PageProps<"/t/[template]"
 
   return (
     <BenchProvider template={template}>
-      <main className="min-h-dvh bg-zinc-950 text-zinc-50">
-        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
-              backgroundSize: "72px 72px",
-            }}
-          />
-          <div className="absolute inset-y-0 left-[-12%] w-152 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),rgba(255,255,255,0))] blur-3xl" />
-          <div className="absolute right-[-10%] top-24 h-112 w-md rounded-full bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.16),rgba(16,185,129,0))] blur-3xl" />
-        </div>
-
-        <section className="border-b border-white/10">
-          <div className="mx-auto flex max-w-7xl items-end justify-between gap-4 px-4 py-5 md:px-6">
-            <h1 className="text-2xl font-semibold tracking-[-0.05em] text-zinc-50 md:text-3xl">
-              image-bench
-            </h1>
+      <main className="min-h-dvh bg-white text-gray-900 dark:bg-[#0d0d0d] dark:text-gray-100">
+        <section className="border-b border-gray-100 dark:border-white/10">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-5 md:px-6">
+            <div>
+              <h1 className="text-xl font-semibold tracking-tight md:text-2xl">image-bench</h1>
+              <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
+                Image generation benchmark
+              </p>
+            </div>
             <a
               href="https://github.com/kane50613/image-bench/blob/master/src/app/render/route.tsx"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-white/10 bg-white/3 px-4 py-3 font-mono text-[0.68rem] uppercase tracking-[0.22em] text-zinc-300 transition-all duration-300 hover:border-emerald-400/40 hover:text-zinc-100 active:translate-y-px"
+              className="rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-900 dark:border-white/15 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-white"
             >
               Source
             </a>
           </div>
         </section>
 
-        <div className="mx-auto max-w-7xl px-4 py-5 md:px-6 md:py-6">
+        <div className="mx-auto max-w-7xl px-4 py-6 md:px-6">
           <ImageCards template={template} />
         </div>
       </main>

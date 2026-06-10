@@ -1,25 +1,27 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { objectKeys } from "ts-extras";
-import { providers, type templates } from "~/lib/const";
+import { type RuntimeKey, runtimes, type templates } from "~/lib/const";
 
 // ── types ────────────────────────────────────────────────────────────────────
 
 export type HistoryEntry = {
   id: number;
   template: string;
+  runtime: RuntimeKey;
   durations: Record<string, number>;
 };
 
 type BenchState = {
   template: keyof typeof templates;
+  runtime: RuntimeKey;
   refreshKey: number;
   durations: Record<string, number>;
   fastestProvider: string | null;
   isComplete: boolean;
   history: HistoryEntry[];
   refresh: () => void;
+  setRuntime: (runtime: RuntimeKey) => void;
   recordDuration: (provider: string, durationMs: string) => void;
 };
 
@@ -46,6 +48,7 @@ export function BenchProvider({
   template: keyof typeof templates;
   children: React.ReactNode;
 }) {
+  const [runtime, setRuntimeState] = useState<RuntimeKey>("fluid");
   const [refreshKey, setRefreshKey] = useState(0);
   const [durations, setDurations] = useState<Record<string, number>>({});
   const [history, setHistory] = useState<HistoryEntry[]>(globalHistory);
@@ -63,10 +66,10 @@ export function BenchProvider({
 
   // Record completed run to history
   useEffect(() => {
-    const allProviders = objectKeys(providers);
+    const runtimeProviders = runtimes[runtime].providers;
     const loadedCount = Object.keys(durations).length;
-    const isComplete = loadedCount > 0 && loadedCount === allProviders.length;
-    const runKey = `${template}-${refreshKey}`;
+    const isComplete = loadedCount > 0 && loadedCount === runtimeProviders.length;
+    const runKey = `${runtime}-${template}-${refreshKey}`;
 
     if (isComplete && recordedRunRef.current !== runKey) {
       setHistory((prev) => {
@@ -74,6 +77,7 @@ export function BenchProvider({
         const entry: HistoryEntry = {
           id: nextId,
           template,
+          runtime,
           durations: { ...durations },
         };
         const next = [entry, ...prev];
@@ -82,12 +86,12 @@ export function BenchProvider({
       });
       recordedRunRef.current = runKey;
     }
-  }, [durations, template, refreshKey]);
+  }, [durations, template, runtime, refreshKey]);
 
   // Fastest provider (only after all loaded)
-  const allProviderKeys = objectKeys(providers);
+  const runtimeProviders = runtimes[runtime].providers;
   const loadedCount = Object.keys(durations).length;
-  const isComplete = loadedCount > 0 && loadedCount === allProviderKeys.length;
+  const isComplete = loadedCount > 0 && loadedCount === runtimeProviders.length;
 
   let fastestProvider: string | null = null;
   if (isComplete) {
@@ -105,6 +109,11 @@ export function BenchProvider({
     setDurations({});
   }, []);
 
+  const setRuntime = useCallback((next: RuntimeKey) => {
+    setRuntimeState(next);
+    setDurations({});
+  }, []);
+
   const recordDuration = useCallback((provider: string, durationStr: string) => {
     const d = parseFloat(durationStr);
     if (!Number.isNaN(d)) {
@@ -116,12 +125,14 @@ export function BenchProvider({
     <BenchContext.Provider
       value={{
         template,
+        runtime,
         refreshKey,
         durations,
         fastestProvider,
         isComplete,
         history,
         refresh,
+        setRuntime,
         recordDuration,
       }}
     >

@@ -2,15 +2,9 @@
 
 import { useEffect } from "react";
 import { useBench } from "~/lib/bench-context";
-import { defaultHeight, defaultWidth, type ImageFormat, providers, templates } from "~/lib/const";
+import { defaultHeight, defaultWidth, providers, templates } from "~/lib/const";
 import { useImage } from "~/lib/use-image";
 import { Skeleton } from "./ui/skeleton";
-
-const FORMAT_STYLES: Record<ImageFormat, string> = {
-  PNG: "border-sky-400/25 bg-sky-400/10 text-sky-200",
-  "WebP Lossy 75%": "border-amber-400/25 bg-amber-400/10 text-amber-200",
-  "WebP Lossless": "border-emerald-400/25 bg-emerald-400/10 text-emerald-200",
-};
 
 export function ImageCard({
   template,
@@ -21,7 +15,14 @@ export function ImageCard({
 }) {
   const { refreshKey, fastestProvider, recordDuration, durations } = useBench();
   const meta = providers[provider];
-  const image = useImage(provider, template, defaultWidth, defaultHeight, refreshKey);
+  const image = useImage(
+    meta.endpoint,
+    provider,
+    template,
+    defaultWidth,
+    defaultHeight,
+    refreshKey,
+  );
   const isFastest = provider === fastestProvider;
   const duration = durations[provider];
   const aspectRatio = defaultWidth / defaultHeight;
@@ -34,45 +35,43 @@ export function ImageCard({
 
   return (
     <article
-      className={`group overflow-hidden border bg-white/[0.02] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 ${
-        isFastest ? "border-emerald-400/45" : "border-white/10 hover:border-white/16"
+      className={`group overflow-hidden rounded-2xl border bg-white transition-colors duration-200 dark:bg-white/5 ${
+        isFastest
+          ? "border-emerald-300 dark:border-emerald-500/40"
+          : "border-gray-200 hover:border-gray-300 dark:border-white/10 dark:hover:border-white/20"
       }`}
     >
-      <div className="flex items-start justify-between gap-3 border-b border-white/10 px-4 py-3">
+      <div className="flex items-start justify-between gap-3 px-5 py-4">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <a
               href={meta.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="truncate text-[0.95rem] font-medium tracking-[-0.02em] text-zinc-50 transition-colors duration-300 hover:text-white"
+              className="truncate text-sm font-semibold text-gray-900 transition-colors duration-200 hover:text-gray-600 dark:text-white dark:hover:text-gray-300"
             >
               {meta.name}
             </a>
             {isFastest && (
-              <span className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-emerald-300">
+              <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
                 Fastest
               </span>
             )}
           </div>
-          <p className="mt-1 truncate text-[0.95rem] text-zinc-300">{meta.engine}</p>
+          <p className="mt-0.5 truncate text-sm text-gray-500 dark:text-gray-400">{meta.engine}</p>
         </div>
 
-        <span
-          className={`shrink-0 border px-2 py-1 font-mono text-[0.58rem] uppercase tracking-[0.22em] ${FORMAT_STYLES[meta.format]}`}
-        >
+        <span className="shrink-0 rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:bg-white/10 dark:text-gray-300">
           {meta.format}
         </span>
       </div>
 
-      <div className="relative bg-zinc-950">
+      <div className="relative bg-gray-50 dark:bg-black/20">
         {image?.error ? (
           <div className="grid place-items-center px-6 text-center" style={{ aspectRatio }}>
-            <div className="space-y-2">
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-zinc-600">
-                Render failed
-              </p>
-              <p className="text-sm text-zinc-400">{image.error}</p>
+            <div className="space-y-1.5">
+              <p className="text-sm font-medium text-gray-900 dark:text-white">Render failed</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{image.error}</p>
             </div>
           </div>
         ) : image?.src ? (
@@ -85,31 +84,28 @@ export function ImageCard({
             height={defaultHeight}
           />
         ) : (
-          <Skeleton className="w-full rounded-none bg-white/[0.04]" style={{ aspectRatio }} />
+          <Skeleton
+            className="w-full rounded-none bg-gray-100 dark:bg-white/10"
+            style={{ aspectRatio }}
+          />
         )}
       </div>
 
-      <div className="grid gap-px border-t border-white/10 bg-white/10 grid-cols-3">
-        <div className="bg-zinc-950/90 px-4 py-3">
-          <p className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-zinc-500">
-            Duration
-          </p>
-          <p className="mt-2 text-base tracking-[-0.03em] text-zinc-50">
+      <div className="grid grid-cols-3 divide-x divide-gray-100 border-t border-gray-100 dark:divide-white/10 dark:border-white/10">
+        <div className="px-5 py-3.5">
+          <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Duration</p>
+          <p className="mt-1 text-sm font-semibold">
             {duration != null ? `${duration.toFixed(1)} ms` : "Pending"}
           </p>
         </div>
-        <div className="bg-zinc-950/90 px-4 py-3">
-          <p className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-zinc-500">
-            File size
-          </p>
-          <p className="mt-2 text-base tracking-[-0.03em] text-zinc-50">{image?.filesize ?? "—"}</p>
+        <div className="px-5 py-3.5">
+          <p className="text-xs font-medium text-gray-500 dark:text-gray-400">File size</p>
+          <p className="mt-1 text-sm font-semibold">{image?.filesize ?? "—"}</p>
         </div>
-        <div className="bg-zinc-950/90 px-4 py-3">
-          <p className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-zinc-500">
-            Frame
-          </p>
-          <p className="mt-2 text-base tracking-[-0.03em] text-zinc-50">
-            {defaultWidth} x {defaultHeight}
+        <div className="px-5 py-3.5">
+          <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Frame</p>
+          <p className="mt-1 text-sm font-semibold">
+            {defaultWidth} × {defaultHeight}
           </p>
         </div>
       </div>

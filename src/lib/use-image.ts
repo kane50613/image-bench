@@ -9,6 +9,7 @@ interface ImageData {
 }
 
 export function useImage(
+  endpoint: string,
   provider: string,
   template: string,
   width: number,
@@ -36,7 +37,7 @@ export function useImage(
 
         const queryString = `${imageUrl()}&_t=${refreshKey}`;
 
-        const res = await fetch(`/render?${queryString}`, {
+        const res = await fetch(`${endpoint}?${queryString}`, {
           signal: abortControllerRef.current?.signal,
         });
 
@@ -80,7 +81,7 @@ export function useImage(
         return null;
       });
     };
-  }, [imageUrl, refreshKey]);
+  }, [endpoint, imageUrl, refreshKey]);
 
   return image;
 }
