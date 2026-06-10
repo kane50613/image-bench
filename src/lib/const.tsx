@@ -53,6 +53,13 @@ export const providers = {
     format: "PNG",
     endpoint: "/render/edge/takumi",
   },
+  "takumi-wasm-webp": {
+    name: "Takumi",
+    url: "https://takumi.kane.tw/docs",
+    engine: "Takumi (WASM)",
+    format: "WebP Lossless",
+    endpoint: "/render/edge/takumi",
+  },
 } as const satisfies Record<string, ProviderMeta>;
 
 export type RuntimeKey = "fluid" | "edge";
@@ -69,7 +76,7 @@ export const runtimes = {
   },
   edge: {
     label: "Vercel Edge",
-    providers: ["next-og-edge", "takumi-wasm"],
+    providers: ["next-og-edge", "takumi-wasm", "takumi-wasm-webp"],
   },
 } as const satisfies Record<RuntimeKey, RuntimeMeta>;
 

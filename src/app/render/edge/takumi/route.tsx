@@ -13,18 +13,24 @@ const fetchCache = new Map();
 export async function GET(request: Request) {
   const fonts = await loadFonts();
 
-  const takumiWasmProvider: ProviderFn = (template, width, height) =>
-    new ImageResponse(createElement(templates[template]), {
-      width,
-      height,
-      format: "png",
-      headers: noStoreHeaders,
-      fonts,
-      emoji: "twemoji",
-      resourcesOptions: {
-        cache: fetchCache,
-      },
-    });
+  const provider =
+    (format: "png" | "webp"): ProviderFn =>
+    (template, width, height) =>
+      new ImageResponse(createElement(templates[template]), {
+        width,
+        height,
+        format,
+        ...(format === "webp" && { quality: 100 }),
+        headers: noStoreHeaders,
+        fonts,
+        emoji: "twemoji",
+        resourcesOptions: {
+          cache: fetchCache,
+        },
+      });
 
-  return handleRender(request, { "takumi-wasm": takumiWasmProvider });
+  return handleRender(request, {
+    "takumi-wasm": provider("png"),
+    "takumi-wasm-webp": provider("webp"),
+  });
 }

@@ -8,16 +8,18 @@ export const metadata: Metadata = {
   description: "Figure out how fast the image generation can be.",
 };
 
+export const viewport = {
+  themeColor: "#0a0a0a",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${GeistSans.className} ${GeistMono.className} antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className={`dark ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

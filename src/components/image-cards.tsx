@@ -1,6 +1,5 @@
 "use client";
 
-import { RotateCw } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { objectKeys } from "ts-extras";
@@ -29,76 +28,72 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
   }, []);
 
   return (
-    <div className="flex w-full flex-col gap-6">
-      <div className="sticky top-0 z-20 pointer-events-none">
-        <div className="relative space-y-3 border-b border-gray-100 bg-white py-3 md:border-b-0 md:bg-transparent dark:border-white/10 dark:bg-[#0d0d0d] dark:md:bg-transparent">
-          <div ref={sentinelRef} className="absolute -top-px h-px w-full" />
-          <div
-            className={`absolute inset-0 bg-white md:bg-white/85 md:backdrop-blur-xl md:mask-[linear-gradient(to_bottom,black_55%,transparent)] transition-opacity duration-300 dark:bg-[#0d0d0d] dark:md:bg-[#0d0d0d]/85 ${
-              isSticky ? "opacity-100" : "opacity-100 md:opacity-0"
-            }`}
-          />
-          <div className="relative grid gap-3 pointer-events-auto lg:grid-cols-[minmax(0,1fr)_auto]">
-            <div className="overflow-x-auto no-scrollbar">
-              <div className="flex w-max min-w-full gap-1 rounded-full bg-gray-100 p-1 dark:bg-white/5">
-                {objectKeys(templates).map((templateKey) => (
-                  <Link
-                    key={templateKey}
-                    href={`/t/${templateKey}${runtimeQuery}`}
-                    className={`flex h-9 shrink-0 items-center rounded-full px-3.5 text-sm font-medium transition-colors duration-200 ${
-                      templateKey === template
-                        ? "bg-white text-gray-900 dark:bg-white/15 dark:text-white"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                    }`}
-                  >
-                    {templates[templateKey]}
-                  </Link>
-                ))}
-              </div>
+    <div className="flex w-full flex-col gap-8">
+      <div className="sticky top-0 z-20">
+        <div ref={sentinelRef} className="absolute -top-px h-px w-full" />
+        <div
+          className={`-mx-4 flex flex-col gap-2 bg-background px-4 py-3 transition-colors duration-200 md:-mx-6 md:px-6 ${
+            isSticky ? "border-b border-border" : "border-b border-transparent"
+          }`}
+        >
+          <div className="-mx-4 overflow-x-auto px-4 no-scrollbar md:-mx-6 md:px-6">
+            <div className="flex w-max min-w-full gap-4">
+              {objectKeys(templates).map((templateKey) => (
+                <Link
+                  key={templateKey}
+                  href={`/t/${templateKey}${runtimeQuery}`}
+                  className={`shrink-0 py-1 text-sm transition-colors duration-200 ${
+                    templateKey === template
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {templates[templateKey]}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex gap-4">
+              {objectKeys(runtimes).map((runtimeKey) => (
+                <button
+                  key={runtimeKey}
+                  type="button"
+                  onClick={() => setRuntime(runtimeKey)}
+                  className={`py-1 text-sm transition-colors duration-200 ${
+                    runtimeKey === runtime
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {runtimes[runtimeKey].label}
+                </button>
+              ))}
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 lg:justify-start">
-              <div className="inline-flex gap-1 rounded-full bg-gray-100 p-1 dark:bg-white/5">
-                {objectKeys(runtimes).map((runtimeKey) => (
-                  <button
-                    key={runtimeKey}
-                    type="button"
-                    onClick={() => setRuntime(runtimeKey)}
-                    className={`flex h-9 items-center rounded-full px-3.5 text-sm font-medium transition-colors duration-200 ${
-                      runtimeKey === runtime
-                        ? "bg-white text-gray-900 dark:bg-white/15 dark:text-white"
-                        : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                    }`}
-                  >
-                    {runtimes[runtimeKey].label}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-2 rounded-full bg-gray-900 px-5 text-sm font-medium text-white transition-colors duration-200 hover:bg-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
-                onClick={refresh}
-                title="Re-run benchmark"
-              >
-                <RotateCw className="size-3.5" />
-                Rerun
-              </button>
-            </div>
+            <button
+              type="button"
+              className="rounded-md border border-border px-3 py-1 text-sm text-muted-foreground transition-colors duration-200 hover:border-input hover:text-foreground"
+              onClick={refresh}
+              title="Re-run benchmark"
+            >
+              Rerun
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {providerKeys.map((providerKey) => (
           <ImageCard key={providerKey} provider={providerKey} template={template} />
         ))}
       </div>
 
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <p className="text-sm font-medium">Run history</p>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{history.length} saved</p>
+        <div className="flex items-baseline justify-between">
+          <p className="text-sm text-muted-foreground">History</p>
+          <p className="text-sm text-muted-foreground">{history.length} saved</p>
         </div>
         <HistoryTable />
       </div>
