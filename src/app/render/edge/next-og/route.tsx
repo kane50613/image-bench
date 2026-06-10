@@ -9,7 +9,7 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  const fonts = await loadFonts(new URL(request.url).origin);
+  const fonts = await loadFonts();
 
   const nextOgEdgeProvider: ProviderFn = (template, width, height) =>
     new VercelImageResponse(createElement(templates[template]), {

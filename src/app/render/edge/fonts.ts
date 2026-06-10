@@ -1,8 +1,27 @@
+// Bundled as edge function assets; fetching /fonts/... from our own origin
+// breaks when deployment protection or bot challenge intercepts the
+// cookie-less server-side request.
 const fontFiles = [
-  { name: "Geist", fileName: "Geist-Regular.ttf", weight: 400 as const },
-  { name: "Geist", fileName: "Geist-Bold.ttf", weight: 700 as const },
-  { name: "Geist Mono", fileName: "GeistMono-Regular.ttf", weight: 400 as const },
-  { name: "Geist Mono", fileName: "GeistMono-Bold.ttf", weight: 700 as const },
+  {
+    name: "Geist",
+    url: new URL("../../../../public/fonts/geist/Geist-Regular.ttf", import.meta.url),
+    weight: 400 as const,
+  },
+  {
+    name: "Geist",
+    url: new URL("../../../../public/fonts/geist/Geist-Bold.ttf", import.meta.url),
+    weight: 700 as const,
+  },
+  {
+    name: "Geist Mono",
+    url: new URL("../../../../public/fonts/geist/GeistMono-Regular.ttf", import.meta.url),
+    weight: 400 as const,
+  },
+  {
+    name: "Geist Mono",
+    url: new URL("../../../../public/fonts/geist/GeistMono-Bold.ttf", import.meta.url),
+    weight: 700 as const,
+  },
 ];
 
 export type Font = {
@@ -12,17 +31,13 @@ export type Font = {
   style: "normal";
 };
 
-// Edge runtime has no filesystem; fetch fonts from the deployment's static
-// assets once and reuse across invocations.
 let fontsPromise: Promise<Font[]> | null = null;
 
-export function loadFonts(origin: string) {
+export function loadFonts() {
   fontsPromise ??= Promise.all(
-    fontFiles.map(async ({ name, fileName, weight }) => ({
+    fontFiles.map(async ({ name, url, weight }) => ({
       name,
-      data: await fetch(new URL(`/fonts/geist/${fileName}`, origin)).then((res) =>
-        res.arrayBuffer(),
-      ),
+      data: await fetch(url).then((res) => res.arrayBuffer()),
       weight,
       style: "normal" as const,
     })),

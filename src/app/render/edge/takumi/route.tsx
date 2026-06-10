@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 const fetchCache = new Map();
 
 export async function GET(request: Request) {
-  const fonts = await loadFonts(new URL(request.url).origin);
+  const fonts = await loadFonts();
 
   const takumiWasmProvider: ProviderFn = (template, width, height) =>
     new ImageResponse(createElement(templates[template]), {
