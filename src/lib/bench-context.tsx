@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { type RuntimeKey, runtimes, type templates } from "~/lib/const";
 
@@ -48,21 +49,24 @@ export function BenchProvider({
   template: keyof typeof templates;
   children: React.ReactNode;
 }) {
-  const [runtime, setRuntimeState] = useState<RuntimeKey>("fluid");
+  const searchParams = useSearchParams();
+  const runtime: RuntimeKey = searchParams.get("runtime") === "edge" ? "edge" : "fluid";
+
   const [refreshKey, setRefreshKey] = useState(0);
   const [durations, setDurations] = useState<Record<string, number>>({});
   const [history, setHistory] = useState<HistoryEntry[]>(globalHistory);
 
-  const prevTemplateRef = useRef(template);
+  const prevRunRef = useRef(`${template}/${runtime}`);
   const recordedRunRef = useRef<string | null>(null);
 
-  // Reset durations when template changes
+  // Reset durations when template or runtime changes (covers back/forward)
   useEffect(() => {
-    if (prevTemplateRef.current !== template) {
-      prevTemplateRef.current = template;
+    const run = `${template}/${runtime}`;
+    if (prevRunRef.current !== run) {
+      prevRunRef.current = run;
       setDurations({});
     }
-  }, [template]);
+  }, [template, runtime]);
 
   // Record completed run to history
   useEffect(() => {
@@ -110,7 +114,13 @@ export function BenchProvider({
   }, []);
 
   const setRuntime = useCallback((next: RuntimeKey) => {
-    setRuntimeState(next);
+    const url = new URL(window.location.href);
+    if (next === "fluid") {
+      url.searchParams.delete("runtime");
+    } else {
+      url.searchParams.set("runtime", next);
+    }
+    window.history.replaceState(null, "", url);
     setDurations({});
   }, []);
 
