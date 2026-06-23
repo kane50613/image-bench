@@ -12,16 +12,6 @@ const fontFiles = [
     url: new URL("../../../../public/fonts/geist/Geist-Bold.ttf", import.meta.url),
     weight: 700 as const,
   },
-  {
-    name: "Geist Mono",
-    url: new URL("../../../../public/fonts/geist/GeistMono-Regular.ttf", import.meta.url),
-    weight: 400 as const,
-  },
-  {
-    name: "Geist Mono",
-    url: new URL("../../../../public/fonts/geist/GeistMono-Bold.ttf", import.meta.url),
-    weight: 700 as const,
-  },
 ];
 
 export type Font = {

@@ -33,7 +33,7 @@ export type ProviderFn = (
   template: keyof typeof templates,
   width: number,
   height: number,
-) => Response | Promise<Response>;
+) => Response;
 
 const paramsSchema = z.object({
   template: z.enum(objectKeys(templates)),
@@ -58,7 +58,7 @@ export async function handleRender(request: Request, providers: Record<string, P
 
   const start = performance.now();
 
-  const response = await provider(template, width, height);
+  const response = provider(template, width, height);
   const headers = response.headers;
 
   const buffer = await response.arrayBuffer();
