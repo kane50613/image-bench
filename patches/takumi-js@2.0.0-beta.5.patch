@@ -1,0 +1,26 @@
+diff --git a/dist/render-1w0Pei0G.mjs b/dist/render-1w0Pei0G.mjs
+index c9c78a0f36edb0cf4a2666cab3e60247ce75545b..8709c2c6cbe5ab6005567344b9b0f5b276b91942 100644
+--- a/dist/render-1w0Pei0G.mjs
++++ b/dist/render-1w0Pei0G.mjs
+@@ -11,7 +11,7 @@ function getImports(module) {
+ async function getImportsImpl(module) {
+ 	if (module) return initializeWasm(module);
+ 	if (shouldSkipCoreImport()) return initializeWasm(importWasmBindings());
+-	try {
++	if (process.env.NEXT_RUNTIME !== "edge") try {
+ 		return await import("@takumi-rs/core");
+ 	} catch (error) {
+ 		if (isNodeEnvironment()) throw new Error("Failed to load @takumi-rs/core in Node.js runtime. Takumi requires the native napi-rs module in Node environments.", { cause: error });
+diff --git a/dist/render-BWrJI7_9.cjs b/dist/render-BWrJI7_9.cjs
+index bdca4dfda7122c3f04598fbc0f0a2438004a886b..01cbefbba406b68f46417b163893840423111168 100644
+--- a/dist/render-BWrJI7_9.cjs
++++ b/dist/render-BWrJI7_9.cjs
+@@ -11,7 +11,7 @@ function getImports(module) {
+ async function getImportsImpl(module) {
+ 	if (module) return initializeWasm(module);
+ 	if (shouldSkipCoreImport()) return initializeWasm(importWasmBindings());
+-	try {
++	if (process.env.NEXT_RUNTIME !== "edge") try {
+ 		return await import("@takumi-rs/core");
+ 	} catch (error) {
+ 		if (isNodeEnvironment()) throw new Error("Failed to load @takumi-rs/core in Node.js runtime. Takumi requires the native napi-rs module in Node environments.", { cause: error });
