@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import ImageResponse from "takumi-js/response";
+import ImageResponse, { type ImageResponseOptions } from "takumi-js/response";
 import { handleRender, noStoreHeaders, type ProviderFn, templates } from "../../shared";
 import { loadFonts } from "../fonts";
 
@@ -20,14 +20,12 @@ export async function GET(request: Request) {
         width,
         height,
         format,
-        ...(format === "webp" && { quality: 100 }),
         headers: noStoreHeaders,
         fonts,
-        emoji: "twemoji",
         resourcesOptions: {
           cache: fetchCache,
         },
-      });
+      } as ImageResponseOptions);
 
   return handleRender(request, {
     "takumi-wasm": provider("png"),
