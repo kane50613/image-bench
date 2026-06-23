@@ -42,7 +42,7 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
                 <Link
                   key={templateKey}
                   href={`/t/${templateKey}${runtimeQuery}`}
-                  className={`shrink-0 py-1 text-sm transition-colors duration-200 ${
+                  className={`shrink-0 py-1.5 text-base transition-colors duration-200 ${
                     templateKey === template
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -61,7 +61,7 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
                   key={runtimeKey}
                   type="button"
                   onClick={() => setRuntime(runtimeKey)}
-                  className={`py-1 text-sm transition-colors duration-200 ${
+                  className={`py-1.5 text-base transition-colors duration-200 ${
                     runtimeKey === runtime
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -74,7 +74,7 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
 
             <button
               type="button"
-              className="rounded-md border border-border px-3 py-1 text-sm text-muted-foreground transition-colors duration-200 hover:border-input hover:text-foreground"
+              className="rounded-md border border-border px-3 py-1.5 text-base text-muted-foreground transition-colors duration-200 hover:border-input hover:text-foreground"
               onClick={refresh}
               title="Re-run benchmark"
             >
@@ -92,8 +92,8 @@ export function ImageCards({ template }: { template: keyof typeof templates }) {
 
       <div className="space-y-3">
         <div className="flex items-baseline justify-between">
-          <p className="text-sm text-muted-foreground">History</p>
-          <p className="text-sm text-muted-foreground">{history.length} saved</p>
+          <p className="text-base text-muted-foreground">History</p>
+          <p className="text-base text-muted-foreground">{history.length} saved</p>
         </div>
         <HistoryTable />
       </div>

@@ -10,12 +10,12 @@ export default async function TemplatePage({ params }: PageProps<"/t/[template]"
   return (
     <main className="min-h-dvh">
       <header className="mx-auto flex max-w-5xl items-baseline justify-between gap-4 px-4 pt-8 pb-6 md:px-6 md:pt-10">
-        <h1 className="text-base font-medium">image-bench</h1>
+        <h1 className="text-lg font-medium">image-bench</h1>
         <a
           href="https://github.com/kane50613/image-bench/blob/master/src/app/render/route.tsx"
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 text-sm text-muted-foreground underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline"
+          className="shrink-0 text-base text-muted-foreground underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline"
         >
           Source
         </a>

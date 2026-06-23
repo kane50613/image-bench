@@ -9,7 +9,7 @@ export function HistoryTable() {
 
   if (history.length === 0) {
     return (
-      <p className="border-t border-border py-6 text-sm text-muted-foreground">
+      <p className="border-t border-border py-6 text-base text-muted-foreground">
         No saved runs yet. Results are recorded here after each completed run.
       </p>
     );
@@ -22,7 +22,7 @@ export function HistoryTable() {
 
   return (
     <div className="overflow-x-auto no-scrollbar">
-      <table className="min-w-full border-collapse whitespace-nowrap text-left text-sm">
+      <table className="min-w-full border-collapse whitespace-nowrap text-left text-base">
         <thead>
           <tr className="border-b border-border text-muted-foreground">
             <th className="py-2.5 pr-4 font-normal">Run</th>
@@ -53,14 +53,14 @@ export function HistoryTable() {
 
             return (
               <tr key={entry.id} className="text-muted-foreground">
-                <td className="py-2.5 pr-4 font-mono text-xs tabular-nums">#{entry.id}</td>
+                <td className="py-2.5 pr-4 font-mono text-sm tabular-nums">#{entry.id}</td>
                 <td className="py-2.5 pr-4">{entry.template}</td>
                 <td className="py-2.5 pr-4">{runtimes[entry.runtime].label}</td>
                 {usedProviders.map((providerKey) => {
                   const duration = entry.durations[providerKey];
 
                   return (
-                    <td key={providerKey} className="py-2.5 pr-4 font-mono text-xs tabular-nums">
+                    <td key={providerKey} className="py-2.5 pr-4 font-mono text-sm tabular-nums">
                       {duration == null ? (
                         "—"
                       ) : (

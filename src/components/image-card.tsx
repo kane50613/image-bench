@@ -41,23 +41,23 @@ export function ImageCard({
             href={meta.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="truncate text-sm font-medium underline-offset-4 hover:underline"
+            className="truncate text-base font-medium underline-offset-4 hover:underline"
           >
             {meta.name}
           </a>
           {meta.engine !== meta.name && (
-            <span className="truncate text-sm text-muted-foreground">{meta.engine}</span>
+            <span className="truncate text-base text-muted-foreground">{meta.engine}</span>
           )}
         </div>
-        <span className="shrink-0 text-xs text-muted-foreground">{meta.format}</span>
+        <span className="shrink-0 text-sm text-muted-foreground">{meta.format}</span>
       </div>
 
       <div className="border-y border-border">
         {image?.error ? (
           <div className="grid place-items-center px-6 text-center" style={{ aspectRatio }}>
             <div className="space-y-1">
-              <p className="text-sm">Render failed</p>
-              <p className="text-sm text-muted-foreground">{image.error}</p>
+              <p className="text-base">Render failed</p>
+              <p className="text-base text-muted-foreground">{image.error}</p>
             </div>
           </div>
         ) : image?.src ? (
@@ -74,7 +74,7 @@ export function ImageCard({
         )}
       </div>
 
-      <div className="flex items-baseline justify-between px-4 py-3 font-mono text-xs text-muted-foreground tabular-nums">
+      <div className="flex items-baseline justify-between px-4 py-3 font-mono text-sm text-muted-foreground tabular-nums">
         <span className={isFastest ? "text-foreground" : ""}>
           {duration != null ? `${duration.toFixed(1)} ms` : "…"}
           {isFastest && " · fastest"}
