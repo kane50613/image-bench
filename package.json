@@ -24,7 +24,7 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "tailwind-merge": "^3.6.0",
-    "takumi-js": "^2.0.0-beta.5",
+    "takumi-js": "^2.0.0-beta.6",
     "zod": "^4.4.3"
   },
   "devDependencies": {
@@ -40,8 +40,5 @@
     "ts-extras": "^1.0.0",
     "tw-animate-css": "^1.4.0",
     "typescript": "^6.0.3"
-  },
-  "patchedDependencies": {
-    "takumi-js@2.0.0-beta.5": "patches/takumi-js@2.0.0-beta.5.patch"
   }
 }
