@@ -21,8 +21,7 @@ export default async function TemplatePage({ params }: PageProps<"/t/[template]"
         </a>
       </header>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pb-16 md:px-6">
-        {/* useSearchParams in BenchProvider needs a Suspense boundary for SSG */}
+      <div className="mx-auto flex w-full max-w-7xl flex-col justify-center px-4 pb-16 md:px-6">
         <Suspense>
           <BenchProvider template={template}>
             <ImageCards template={template} />
