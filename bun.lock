@@ -17,7 +17,7 @@
         "react": "19.2.7",
         "react-dom": "19.2.7",
         "tailwind-merge": "^3.6.0",
-        "takumi-js": "^2.0.0-beta.12",
+        "takumi-js": "^2.0.0-beta.13",
         "zod": "^4.4.3",
       },
       "devDependencies": {
@@ -35,9 +35,6 @@
         "typescript": "^6.0.3",
       },
     },
-  },
-  "patchedDependencies": {
-    "takumi-js@2.0.0-beta.12": "patches/takumi-js@2.0.0-beta.12.patch",
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -238,11 +235,11 @@
 
     "@tailwindcss/postcss": ["@tailwindcss/postcss@4.3.1", "", { "dependencies": { "@alloc/quick-lru": "^5.2.0", "@tailwindcss/node": "4.3.1", "@tailwindcss/oxide": "4.3.1", "postcss": "8.5.15", "tailwindcss": "4.3.1" } }, "sha512-dNJuNbdEJT/SWRuXTYP1WSamelsz3ztkUsdtWQPjrexysrTpaEPM40P/71knXiXLYEojqPOEGitVLLpPMS5T6A=="],
 
-    "@takumi-rs/core": ["@takumi-rs/core@2.0.0-beta.12", "", { "dependencies": { "@takumi-rs/helpers": "2.0.0-beta.12" } }, "sha512-yLpGbArfVXyuCeZhGPFQXk3pdBVFPKJX86CPXI9uKTEEoJLlGLgCYr24Oo3pzpewDoBQD6jLnSUjIC2uw3uZgQ=="],
+    "@takumi-rs/core": ["@takumi-rs/core@2.0.0-beta.13", "", { "dependencies": { "@takumi-rs/helpers": "2.0.0-beta.13" } }, "sha512-1FVGaNBf/LM3eKm9pTTIvdW77/MBWWeai+k3Y/hugyIGKH8zMiXzJEwaXMoCm2zPmXbaDU4Vu2BJ5ZkCBDulpA=="],
 
-    "@takumi-rs/helpers": ["@takumi-rs/helpers@2.0.0-beta.12", "", { "peerDependencies": { "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["react", "react-dom"] }, "sha512-7cKNdy1jedIDZBy2TWUF4+blmAe/3/fA4qiW02HlX/Dys7Wg+7Buae8FXlkGFC2YOc953UmJiJe6PUY9bXh9LQ=="],
+    "@takumi-rs/helpers": ["@takumi-rs/helpers@2.0.0-beta.13", "", { "peerDependencies": { "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["react", "react-dom"] }, "sha512-IIFtsfT+AbiXLjvtb8I41tHUf/Usmaq1lQLhlvsZuSMeVMDX9V2hzxoirxvL7GQuduHtcm0CxKPGkwj7euZIDA=="],
 
-    "@takumi-rs/wasm": ["@takumi-rs/wasm@2.0.0-beta.12", "", { "dependencies": { "@takumi-rs/helpers": "2.0.0-beta.12" } }, "sha512-nxQCULooDk4+x3LHrbZhbHC5/hfFaKFeK8+QIFoXeI05OBlsBSkQCGXT7AFlT/6/howw+/8A/QmGOcNi5yk6tg=="],
+    "@takumi-rs/wasm": ["@takumi-rs/wasm@2.0.0-beta.13", "", { "dependencies": { "@takumi-rs/helpers": "2.0.0-beta.13" } }, "sha512-1m+ua/047/Ah2aGq/VeAkGpt71KpTeleni2jsb1gYO8BZY4WVz64owSxF9SerFaeAvprz8Hdntu0TtuBmWb9HA=="],
 
     "@types/bun": ["@types/bun@1.3.14", "", { "dependencies": { "bun-types": "1.3.14" } }, "sha512-h1hFqFVcvAvD9j9K7ZW7vd82aSA+rTdznZa+5bwvCwqSB1jmmfLcbIWhOLx1/+boy/xmjgCs/OMUL8hRJSmnPw=="],
 
@@ -342,7 +339,7 @@
 
     "tailwindcss": ["tailwindcss@4.3.1", "", {}, "sha512-hk+TB1m+K8CYNrP6rjQaq/Y+4Zylwpa87mLYBKCunwnnQ9p+fHb7kmSfGqyEJoxF/O6CDyABWVFEafNSYKll+Q=="],
 
-    "takumi-js": ["takumi-js@2.0.0-beta.12", "", { "dependencies": { "@takumi-rs/core": "2.0.0-beta.12", "@takumi-rs/helpers": "2.0.0-beta.12", "@takumi-rs/wasm": "2.0.0-beta.12" } }, "sha512-B0GOTCLh/XDYD+suulTk22UNiDsLB54UkPLj2lcK7+6j4AT1Jc/REXgShRNjeaWivSGIun7cjJX6Kaq7aGTlfA=="],
+    "takumi-js": ["takumi-js@2.0.0-beta.13", "", { "dependencies": { "@takumi-rs/core": "2.0.0-beta.13", "@takumi-rs/helpers": "2.0.0-beta.13", "@takumi-rs/wasm": "2.0.0-beta.13" } }, "sha512-cMdu5RRFPlKSqEQ6Ta4ItdI/RcayjYeekEhHT+73NrPE7EmqFgXEku+fKPAWsjMDDc65U+4dB9+qlRN2DZogfw=="],
 
     "tapable": ["tapable@2.3.3", "", {}, "sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A=="],
 
