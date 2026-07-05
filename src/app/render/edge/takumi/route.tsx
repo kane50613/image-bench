@@ -22,8 +22,8 @@ export async function GET(request: Request) {
         format,
         headers: noStoreHeaders,
         fonts,
-        resourcesOptions: {
-          cache: fetchCache,
+        images: {
+          fetchCache: fetchCache,
         },
       } as ImageResponseOptions);
 

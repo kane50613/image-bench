@@ -59,8 +59,8 @@ function takumiProvider(template: keyof typeof templates, width: number, height:
     headers: noStoreHeaders,
     fonts,
     emoji: "twemoji",
-    resourcesOptions: {
-      cache: fetchCache,
+    images: {
+      fetchCache: fetchCache,
     },
   });
 }
@@ -74,8 +74,8 @@ function takumiWebpProvider(template: keyof typeof templates, width: number, hei
     headers: noStoreHeaders,
     fonts,
     emoji: "twemoji",
-    resourcesOptions: {
-      cache: fetchCache,
+    images: {
+      fetchCache: fetchCache,
     },
   });
 }
