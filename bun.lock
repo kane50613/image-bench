@@ -36,6 +36,9 @@
       },
     },
   },
+  "patchedDependencies": {
+    "@takumi-rs/core@2.0.0-rc.13": "patches/@takumi-rs%2Fcore@2.0.0-rc.13.patch",
+  },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
 
