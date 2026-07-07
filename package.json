@@ -34,7 +34,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "mitata": "^1.0.34",
-    "oxfmt": "^0.57.0",
+    "oxfmt": "^0.58.0",
     "oxlint": "^1.72.0",
     "tailwindcss": "^4.3.2",
     "ts-extras": "^1.2.0",
