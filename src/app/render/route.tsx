@@ -1,7 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse as VercelImageResponse } from "next/og";
-import { createElement } from "react";
 import ImageResponse from "takumi-js/response";
 import { handleRender, noStoreHeaders, templates } from "./shared";
 
@@ -52,7 +51,7 @@ export function GET(request: Request) {
 const fetchCache = new Map();
 
 function takumiProvider(template: keyof typeof templates, width: number, height: number) {
-  return new ImageResponse(createElement(templates[template]), {
+  return new ImageResponse(templates[template](), {
     width,
     height,
     format: "png",
@@ -66,7 +65,7 @@ function takumiProvider(template: keyof typeof templates, width: number, height:
 }
 
 function takumiWebpProvider(template: keyof typeof templates, width: number, height: number) {
-  return new ImageResponse(createElement(templates[template]), {
+  return new ImageResponse(templates[template](), {
     width,
     height,
     format: "webp",
@@ -81,7 +80,7 @@ function takumiWebpProvider(template: keyof typeof templates, width: number, hei
 }
 
 function nextOgProvider(template: keyof typeof templates, width: number, height: number) {
-  return new VercelImageResponse(createElement(templates[template]), {
+  return new VercelImageResponse(templates[template](), {
     width,
     height,
     headers: noStoreHeaders,

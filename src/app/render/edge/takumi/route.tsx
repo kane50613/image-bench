@@ -1,4 +1,3 @@
-import { createElement } from "react";
 import ImageResponse, { type ImageResponseOptions } from "takumi-js/response";
 import { handleRender, noStoreHeaders, type ProviderFn, templates } from "../../shared";
 import { loadFonts } from "../fonts";
@@ -16,7 +15,7 @@ export async function GET(request: Request) {
   const provider =
     (format: "png" | "webp"): ProviderFn =>
     (template, width, height) =>
-      new ImageResponse(createElement(templates[template]), {
+      new ImageResponse(templates[template](), {
         width,
         height,
         format,
