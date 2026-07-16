@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
+    useTypeScriptCli: true,
   },
   typedRoutes: true,
   reactStrictMode: false,
