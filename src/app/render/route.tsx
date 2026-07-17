@@ -69,7 +69,6 @@ function takumiWebpProvider(template: keyof typeof templates, width: number, hei
     width,
     height,
     format: "webp",
-    quality: 100,
     headers: noStoreHeaders,
     fonts,
     emoji: "twemoji",
