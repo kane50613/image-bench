@@ -21,8 +21,8 @@
     "next": "^16.4.0",
     "nstr": "^0.1.3",
     "pretty-bytes": "^7.2.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "tailwind-merge": "^3.7.0",
     "takumi-js": "^2.16.0",
     "zod": "^4.6.7"
