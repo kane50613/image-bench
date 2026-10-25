@@ -1,4 +1,7 @@
+import { seededRandom } from "~/lib/utils";
+
 export function AnalyticsDashboard() {
+  const random = seededRandom(24);
   const metrics = [
     {
       title: "Total Revenue",
@@ -135,7 +138,7 @@ export function AnalyticsDashboard() {
           }}
         >
           {Array.from({ length: 24 }).map((_, i) => {
-            const height = Math.max(0, 20 + Math.sin(i * 0.5) * 40 + Math.random() * 30);
+            const height = Math.max(0, 20 + Math.sin(i * 0.5) * 40 + random() * 30);
             return (
               <div
                 key={`bar-key-${
@@ -149,7 +152,7 @@ export function AnalyticsDashboard() {
                   backgroundColor: "#3b82f6",
                   borderTopLeftRadius: "6px",
                   borderTopRightRadius: "6px",
-                  opacity: 0.8 + Math.random() * 0.2,
+                  opacity: 0.8 + random() * 0.2,
                 }}
               />
             );
