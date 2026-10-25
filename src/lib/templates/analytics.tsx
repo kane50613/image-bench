@@ -135,7 +135,7 @@ export function AnalyticsDashboard() {
           }}
         >
           {Array.from({ length: 24 }).map((_, i) => {
-            const height = 20 + Math.sin(i * 0.5) * 40 + Math.random() * 30;
+            const height = Math.max(0, 20 + Math.sin(i * 0.5) * 40 + Math.random() * 30);
             return (
               <div
                 key={`bar-key-${
